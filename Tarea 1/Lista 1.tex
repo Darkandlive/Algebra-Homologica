@@ -1,0 +1,271 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage[spanish,es-lcroman]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{amsmath,stackengine,scalerel,mathtools}
+\usepackage{xparse, tikz-cd, pgfplots,tikz}
+\usepackage{mathrsfs}
+\usepackage{comment}
+\usepackage{faktor}
+\newcommand{\fundgrouponbp}[2]{
+	\pi_1\lrprth{#1,#2}
+}
+\newcommand{\fundgroup}[1]{
+	\pi_1\lrprth{#1}
+}
+\newcommand{\invconj}[2]{
+	#2^{-1} #1 #2
+}
+\newcommand{\indexedseq}[2]{
+	\arbtuple{#1}{#2}{\mathbb{N}}
+}
+\input{C:/Users/HP/Desktop/respaldo/Documents/Maestria/S2/Algebras de Artin/Comandos Matemagicos}
+\title{Examen 3}
+\author{Arruti Sebastián Luis Gerardo}
+\begin{document}
+	¡Sí, lo matamos!--- dijo el estadista.
+	\newpage
+	\begin{enumerate}[label=\textbf{Ej \arabic*.}]
+		\item 
+		\item
+		\item Sea $\catarrow{f}{A}{B}$ en una categoría $\mathscr{C}$, así:
+		\begin{enumerate}
+			\item si $f$ es un split-epi y monoformismo, entonces $f$ es un isomorfismo;
+			\item si $\catarrow{F}{\mathscr{C}}{\mathscr{D}}$ es un funtor y $f$ es un isomorfismo, split-mono o split-epi, entonces $F\lrprth{f}$ también lo es.
+		\end{enumerate}
+		\begin{proof}
+			\boxed{a)} Como $f$ es un split-epi $\exists\ g\in\ringmodhom{\mathscr{C}}{B}{A}$ tal que $fg=1_B$. Notemos que
+			\begin{align*}
+				f\lrprth{gf}&=\lrprth{fg}f=1_B f=f=f1_A\\
+				\implies gf&=1_A, && f\text{ es mono}\\
+				\therefore\ & f \text{ es un isomorfismo.}
+			\end{align*}
+			\boxed{b)} Supongamos que $f$ es un split-mono, entonces $\exists\ \catarrow{g}{B}{A}$ en $\mathscr{C}$ tal que $gf=1_A$, con lo cual $\catarrow{Ff}{FA}{FB}$, $\catarrow{Fg}{FB}{FA}$ en $\mathscr{D}$ y
+			\begin{align*}
+				F\lrprth{g}F\lrprth{f}&=\lrprth{gf}=F\lrprth{1_A}=1_{F\lrprth{A}}\\
+				\implies & F\lrprth{f}\text{ es un split-mono.}
+			\end{align*}
+			Supongamos ahora que $f$ es un split-epi, luego $\exists\ \catarrow{g}{B}{A}$ en $\mathscr{C}$ tal que $fg=1_B$, con lo cual $\catarrow{Ff}{FA}{FB}$, $\catarrow{Fg}{FB}{FA}$ en $\mathscr{D}$ y
+			\begin{align*}
+				F\lrprth{f}F\lrprth{g}&=\lrprth{fg}=F\lrprth{1_B}=1_{F\lrprth{B}}\\
+				\implies & F\lrprth{f}\text{ es un split-epi.}
+			\end{align*}   
+			Lo anterior, en conjunto a la equivalencia dada en el Ej. 1 (f), se sigue que si $f$ es un isomorfismo en $\mathscr{C}$ entonces $F\lrprth{f}$ lo es en $\mathscr{D}$.\\
+		\end{proof}
+		\item Sean $\mathscr{A}$ y $\mathscr{B}$ categorías.
+		\begin{enumerate}
+			\item Sea $\eta\in\nattrans{\mathscr{A}}{\mathscr{B}}{F}{G}$. Si $\forall\ A\in\mathscr{A}$ $\catarrow{\eta_{A}}{FA}{GA}$ es un isomorfismo en $\mathscr{B}$ y $\eta^{-1}:=\lrbrack{\lrprth{\eta^{-1}}_A}_{A\in\mathscr{A}}$, con $\lrprth{\eta^{-1}}_A:=\lrprth{\eta_{A}}^{-1}$, entonces $\eta^{-1}\in\nattrans{\mathscr{A}}{\mathscr{B}}{G}{F}$.
+			\item Si $\eta\in\nattrans{\mathscr{A}}{\mathscr{B}}{F}{G}$, $\rho\in\nattrans{\mathscr{A}}{\mathscr{B}}{G}{H}$ entonces la composición de transformaciónes naturales, con $\rho\eta$ dada por $\lrprth{\rho\eta}_A:=\rho_A\circ\eta_A$ $\forall\ A\in\mathscr{A}$, es una operación asociativa.
+			\item Si $T\in\lrsqp{\mathscr{A},\mathscr{B}}$ y $\catarrow{1_T}{T}{T}$ está dada por $\lrprth{1_T}_A:=1_{T\lrprth{A}}$ $\forall\ A\in\mathscr{A}$, entonces $1_T\in\nattrans{\mathscr{A}}{\mathscr{B}}{T}{T}$.
+			\item Si $\alpha\in\nattrans{\mathscr{A}}{\mathscr{B}}{F}{G}$, entonces
+			\begin{equation*}
+				\alpha 1_F=\alpha=1_G \alpha.
+			\end{equation*}
+		\end{enumerate}
+		\begin{proof}
+			\boxed{a)} Dado que $\forall\ A\in\mathscr{A}$ $\catarrow{\eta_{A}}{FA}{GA}$ es un isomorfismo en $\mathscr{B}$, se tiene que $\lrprth{\eta_{A}}^{-1}\in\ringmodhom{\mathscr{B}}{GA}{FA}$ y que si $\catarrow{\alpha}{A}{A'}$ está en $\mathscr{A}$, entonces
+			\begin{align*}
+				G\lrprth{\alpha}\eta_{A}&=\eta_{A'}F\lrprth{\alpha}, && \eta\in\nattrans{\mathscr{A}}{\mathscr{B}}{F}{G}\\
+				\implies& F\lrprth{\alpha}\lrprth{\eta_{A}}^{-1}=\lrprth{\eta_{A'}}^{-1}G\lrprth{\alpha}.
+			\end{align*} 
+		 Así $\catarrow{\eta^{-1}}{G}{F}$ es una transformación natural, pues lo anterior garantiza que el siguiente diagrama conmuta
+		 \begin{equation*}
+		 	\commutativesquare{A=G\lrprth{A},B=F\lrprth{A},C=G\lrprth{A'},D=F\lrprth{A'},f=\lrprth{\eta_{A}}^{-1},g=G\lrprth{\alpha},h=F\lrprth{\alpha},k=\lrprth{\eta_{A'}}^{-1},}.
+		 \end{equation*}
+	 	\boxed{b)} Notemos que $\forall\ A\in\mathscr{A}$ se tiene que $\rho_A\eta_{A}\in\ringmodhom{\mathscr{B}}
+	 	{F\lrprth{A}}{G\lrprth{A}}$. Además si $\catarrow{\alpha}{A}{A'}$ está en $\mathscr{A}$, por ser $\eta$ y $\rho$ transformaciones naturales, se tiene que $G\lrprth{\alpha}\eta_{A}=\eta_{A'}F\lrprth{\alpha}$ y $H\lrprth{\alpha}\rho_{A}=\rho_{A'}G\lrprth{\alpha}$, con lo cual
+	 	\begin{align*}
+	 		H\lrprth{\alpha}\lrprth{\rho_A\eta_A}&=\lrprth{H\lrprth{\alpha}\rho_{A}}\eta_{A}=\lrprth{\rho_{A'}G\lrprth{\alpha}}\eta_{A}\\&=\rho_{A'}\lrprth{G\lrprth{\alpha}\eta_{A}}=\rho_{A'}\lrprth{\eta_{A'}F\lrprth{\alpha}}\\&=\lrprth{\rho_{A'}\eta_{A'}}F\lrprth{\alpha},
+	 	\end{align*}
+ 		de modo que el siguiente diagrama conmuta
+ 		\begin{equation*}
+ 			\commutativesquare{A=F\lrprth{A},B=H\lrprth{A},C=F\lrprth{A'},D=H\lrprth{A'},f=\rho_{A}\eta_{A},g=F\lrprth{\alpha},h=G\lrprth{\alpha},k=\rho_{A'}\eta_{A'},},
+ 		\end{equation*}
+ 		y por lo tanto $\catarrow{\rho\eta}{F}{H}$ es una tranformación natural.\\
+ 		Verificaremos ahora que la composición de transformaciones naturales es asociativa. Si $\rho$ y $\eta$ están dados como al comienzo, $\catarrow{I}\in\lrsqp{\mathscr{A},\mathscr{B}}$ y $\catarrow{\chi}{H}{I}$  es una transformación natural, entonces si $A\in\mathscr{A}$
+ 		\begin{align*}
+ 			\chi_A\lrprth{\rho_{A}\eta_{A}}&=\lrprth{\chi_A\rho_{A}}\eta_{A}\in\lrprth{\chi\rho}\eta,
+ 			\implies & \chi\lrprth{\rho\eta}\subseteq\lrprth{\chi\rho}\eta.
+ 		\end{align*}
+ 		En forma análoga se verifica la otra contención, y así se tiene que $\chi\lrprth{\rho\eta}=\lrprth{\chi\rho}\eta$.\\
+ 		\boxed{c)} Si $\catarrow{\alpha}{A}{A'}$ está en $\mathscr{A}$, entonces
+ 		\begin{align*}
+ 			T\lrprth{\alpha}1_{T\lrprth{\alpha}}&=T\lrprth{\alpha}\\
+ 			&=1_{T\lrprth{A'}}T\lrprth{\alpha},
+		\end{align*}
+		luego\begin{equation*}
+			\commutativesquare{A=T\lrprth{A},B=T\lrprth{A},C=T\lrprth{A'},D=T\lrprth{A'},f=1_{T\lrprth{A}},g=T\lrprth{\alpha},h=T\lrprth{\alpha},k=1_{T\lrprth{A'}},}
+		\end{equation*}
+		conmuta, y por tanto $\catarrow{1_T}{T}{T}$ es una transformación natural.\\
+		\boxed{d)} Se tiene que $\forall\ A\in\mathscr{A}$ $\alpha_A1_{F\lrprth{A}}=\eta_A$, con lo cual $\lrprth{\alpha 1_F}_A=\alpha_A$ y por tanto $\alpha 1_F=\alpha$. Análogamente se verifica que $1_G\alpha=\alpha$.
+		\end{proof}
+		\item 
+		\item
+		\item Si los siguientes diagramas conmutativos en una categoría $\mathscr{C}$
+		\begin{align*}
+			\commutativesquare{A=P,B=A_2,C=A_1,D=A,f=\beta_2,g=\beta_1,h=\alpha_2,k=\alpha_1,}\quad  \commutativesquare{A=P',B=A_2,C=A_1,D=A,f=\beta_2',g=\beta_1',h=\alpha_2,k=\alpha_1,}
+		\end{align*}
+		son pull-backs, entonces $\exists$ $\catarrow{\gamma}{P}{P'}$ en $\mathscr{C}$ un isomorfismo tal que $\beta_i=\beta_i'\gamma$, $\forall\ i\in\lrsqp{1,2}$.
+		\begin{proof}
+			Por la propiedad universal del pull-back aplicada a P', se tiene el siguiente diagrama conmutativo
+			\begin{equation*}
+				\commutativesquare{up=t,A=P',B=A_2,C=A_1,D=A,f=\beta_2',g=\beta_1',h=\alpha_2,k=\alpha_1,l=\beta_2,m=\beta_1,n=\exists!\ \gamma,},
+			\end{equation*}
+		mientras que la propiedad universal del pull-back aplicada a P grantiza que el siguiente diagrama conmuta
+		\begin{equation*}
+			\commutativesquare{up=t,P=P',A=P,B=A_2,C=A_1,D=A,f=\beta_2,g=\beta_1,h=\alpha_2,k=\alpha_1,l=\beta_2',m=\beta_1',n=\exists!\ \gamma',}.
+		\end{equation*}
+		Así 
+		\begin{equation*}
+			\begin{split}
+				\beta_1\lrprth{\gamma'\gamma}&=\lrprth{\beta_1'}\gamma\\
+			&=\beta_1,\\
+			\beta_2\lrprth{\gamma'\gamma}&=\lrprth{\beta_2'}\gamma\\
+			&=\beta_2,
+			\end{split}\tag{*}\label{condiciones}
+		\end{equation*}
+		de modo que los diagramas
+		\begin{equation*}
+			\commutativesquare{up=t,A=P,B=A_2,C=A_1,D=A,f=\beta_2,g=\beta_1,h=\alpha_2,k=\alpha_1,l=\beta_1,m=\beta_2,n=\gamma'\gamma,}\quad\commutativesquare{up=t,A=P,B=A_2,C=A_1,D=A,f=\beta_2,g=\beta_1,h=\alpha_2,k=\alpha_1,l=\beta_1,m=\beta_2,n=1_P,}
+		\end{equation*}
+		y por lo tanto, empleando la propiedad universal del pull-back para $P$, se tiene que $\gamma'\gamma=1_P$. En forma análoga, empleando ahora la propiedad universal del pull-back para $P'$, se verifica que $\gamma\gamma'=1_{P'}$, de modo que $\catarrow{\gamma}{P}{P'}$ es un isomorfismo en $\mathscr{C}$. Con lo anterior y (\ref{condiciones}) se tiene lo deseado.\\
+		\end{proof} 
+		\item Sea el siguiente diagrama conmutativo en una categoría $\mathscr{C}$
+		\begin{equation*}
+			\commutativesquare{A=P,B=A_2,C=A_1,D=A,f=\beta_2,g=\beta_1,h=\alpha_2,k=\alpha_1,}
+		\end{equation*}
+		un pull-back, entonces
+		\begin{enumerate}
+			\item si $\alpha_1$ es un monomorfismo, entonces $\beta_2$ también lo es;
+			\item $\beta_2$ es un split-epi si y sólo si $\alpha_2$ se factoriza a través de $\alpha_1$.
+		\end{enumerate}
+		\begin{proof}
+			\boxed{a)} Supongamos que $\alpha_1$ es un monomorfismo y que $\catarrow{f,g}{B}{P}$ son morfismos en $\mathscr{C}$ tales que $\beta_2 f=\beta_2 g$. Notemos primeramente que así
+			\begin{align*}
+				\alpha_1\lrprth{\beta_1 f}&=\lrprth{\alpha_2\beta 2}f=\alpha_2\lrprth{\beta_2 g}=\lrprth{\alpha_1\beta_1}g\\
+				&=\alpha_1\lrprth{\beta_1 g}\\
+				\implies \beta_1 f&=\beta_1 g, && \alpha_1\text{ es un mono}
+			\end{align*}
+			con lo cual se tiene el siguiente diagrama conmutativo
+			\begin{equation*}
+				\commutativesquare{up=t,P=B,A=P,B=A_2,C=A_1,D=A,f=\beta_2,g=\beta_1,h=\alpha_2,k=\alpha_1,l=\beta_2 f,m=\beta_1 f,n=f\text{, }g,},
+			\end{equation*}
+		y así la propiedad universal del pull-back garantiza que $f=g$, con lo cual $\beta_2$ es un mono.\\
+		\boxed{b)\implies} Dado que $\beta_2$ es un split-epi $\exists\ \catarrow{\gamma}{A_2}{P}$ tal que $\beta_2\gamma=1_{A_2}$, así
+		\begin{align*}
+			\alpha_1\lrprth{\beta_1\gamma}&=\lrprth{\alpha_2\beta_2}\gamma=\alpha_2\lrprth{1_{A_2}}\\
+			&=\alpha_2,\\
+			\implies &\alpha_2\text{ se factoriza a través de }\alpha_1.
+		\end{align*}
+		\boxed{b)\impliedby} Se tiene que $\exists\ \catarrow{\alpha}{A_2}{A_1}$ en $\mathscr{C}$ tal que $\alpha_2=\alpha_1\alpha$, con lo cual a partir de la propiedad universal del pull-back se obtiene el siguiente diagrama conmutativo
+		\begin{equation*}
+			\commutativesquare{up=t, P=A_2, A=P,B=A_2,C=A_1,D=A,f=\beta_2,g=\beta_1,h=\alpha_2,k=\alpha_1, l=1_{A_2},m=\alpha,n=\exists !\ \gamma,},
+		\end{equation*}
+		del cual se deduce que en partícular $\beta_2\gamma=1_{A_2}$, y así se tiene lo deseado.\\
+		\end{proof}
+		\item 
+		\item
+		\item Enunciaremos y probaremos la proposición dual al Ej. 8. Notemos primeramente que\\
+		\textbf{Pull-back:}\begin{enumerate}[label=PB\Roman*)]
+			\item $\exists\ \catarrow{\beta_1}{P}{A_1},\catarrow{\beta_2}{P}{A_2}$ tales que $\alpha_1\beta_1=\alpha_2\beta_2$.
+			\item $\forall\ P'\in\mathscr{C}$ y $\forall\ \catarrow{\beta_1'}{P'}{A_1},\catarrow{\beta_2'}{P'}{A_2}$ tales que $\alpha_1\beta_1'=\alpha_2\beta_2'$, $\exists !\ \catarrow{\gamma}{P'}{P}$ tal que $\beta_1'=\beta_1\gamma$ y $\beta_2'=\beta_2\gamma$.
+		\end{enumerate}
+		\textbf{Pull-back\textsuperscript{op}:}\begin{enumerate}[label=PB\textsuperscript{op}\Roman*)]
+		\item $\exists\ \catarrow{\beta_1^{op}}{A_1}{P},\catarrow{\beta_2^{op}}{A_2}{P}$ tales que $\alpha_1^{op}\beta_1^{op}=\alpha_2^{op}\beta_2^{op}$.
+		\item $\forall\ P'\in\mathscr{C^{op}}$ y $\forall\ \catarrow{\beta_1'^{op}}{A_1}{P'},\catarrow{\beta_2'^{op}}{A_2}{P'}$ tales que $\alpha_1^{op}\beta_1'^{op}=\alpha_2^{op}\beta_2'^{op}$, $\exists !\ \catarrow{\gamma^{op}}{P}{P'}$ tal que $\beta_1'^{op}=\beta_1^{op}\gamma^{op}$ y $\beta_2'^{op}=\beta_2^{op}\gamma^{op}$.
+	\end{enumerate}
+	\textbf{Pull-back\textsuperscript{*}:}\begin{enumerate}[label=PB\textsuperscript{*}\Roman*)]
+	\item $\exists\ \catarrow{\beta_1}{A_1}{P},\catarrow{\beta_2}{A_2}{P}$ tales que $\beta_1\alpha_1=\beta_2\alpha_2$.
+	\item $\forall\ P'\in\mathscr{C}$ y $\forall\ \catarrow{\beta_1'}{A_1}{P'},\catarrow{\beta_2'}{A_2}{P'}$ tales que $\beta_1'\alpha_1=\beta_2'\alpha_2$, $\exists !\ \catarrow{\gamma}{P}{P'}$ tal que $\beta_1'=\gamma\beta_1$ y $\beta_2'=\gamma\beta_2$.
+	\end{enumerate}
+	Esto último es la definición de que un objeto $P$ sea un push-out de $\catarrow{\alpha_1}{A}{A_1}$ y $\catarrow{\alpha_2}{A}{A_2}$. Por lo anterior, y dado que las propiedades duales de mono y split-epi son respectivamente epi y split-mono, la proposición dual del Ej. 8 es:\\
+	Sea el siguiente diagrama conmutativo en una categoria $\mathscr{C}$
+	\begin{equation*}
+		\commutativesquare{pp=l,A=P,B=A_2,C=A_1,D=A, f=\beta_2,g=\beta_1,h=\alpha_2,k=\alpha_1,}
+	\end{equation*}	
+	un push-out, entonces
+		\begin{enumerate}
+			\item si $\alpha_1$ es un epimorfismo, entonces $\beta_2$ también lo es;
+			\item $\beta_2$ es un split-mono  si y sólo si $\exists\ \catarrow{\delta}{A_1}{A_2}$ en $\mathscr{C}$ tal que $\alpha_2=\delta\alpha_1$.
+		\end{enumerate}
+	\begin{proof}
+		\boxed{a)} Supongamos que $\catarrow{f}{P}{Q}$ y $\catarrow{g}{P}{Q}$ en $\mathscr{C}$ son tales que $f\beta_2=g\beta_2$. Notemos que
+		\begin{align*}
+			\lrprth{f\beta_1}\alpha_1&=f\lrprth{\beta_2\alpha 2}=\lrprth{g\beta_2 }\alpha_2=g\lrprth{\beta_1\alpha_1}\\
+			&=\lrprth{g\beta_1}\alpha_1\\
+			\implies f\beta_1 &=g\beta_1 , && \alpha_1\text{ es un epi}
+		\end{align*}
+		con lo cual se tiene el siguiente diagrama conmutativo
+		\begin{equation*}
+			\commutativesquare{up=t,pp=l,P=B,A=P,B=A_2,C=A_1,D=A,f=\beta_2,g=\beta_1,h=\alpha_2,k=\alpha_1,l=\beta_2 f,m=\beta_1 f,n=f\text{, }g,},
+		\end{equation*}
+		y así la propiedad universal del push-out garantiza que $f=g$, con lo cual $\beta_2$ es un epi.\\
+		\boxed{b)\implies} Por ser $\beta_2$ un split-mono $\exists\ \catarrow{\gamma}{P}{A_2}$ en $\mathscr{C}$ tal que $\gamma\beta_2=1_{A_2}$, de modo que si $\delta:=\gamma\beta_1$, entonces
+		\begin{align*}
+			\delta\alpha_1&=\gamma\lrprth{\beta_1\alpha_1}=\lrprth{\gamma\beta_2}\alpha_2=1_{A_2}\alpha_2\\
+			&=\alpha_2. 
+		\end{align*}
+		\boxed{b)\impliedby} Bajo estas condiciones de la propiedad universal del push-out se obtiene el siguiente diagrama conmutativo
+		\begin{equation*}
+			\commutativesquare{up=t,pp=l,P=A_2,A=P,B=A_2,C=A_1,D=A,f=\beta_2,g=\beta_1,h=\alpha_2,k=\alpha_1,l=1_{A_2},m=\delta,n=\exists !\ \gamma,},
+		\end{equation*}
+		del cual se sigue en partícular que $\gamma\beta_2=1_{A_2}$.
+	\end{proof}
+		\item Si $R$ es un anillo entonces la categoría $Mod\lrprth{R}$ tiene pull-backs.
+		\begin{proof}
+			Sean $\catarrow{\alpha_1}{A_1}{A}$ y $\catarrow{\alpha_2}{A_2}{A}$ morfismos de $R$-módulos y
+			\begin{align*}
+				A_1\times_{A} A_2:=\descset{\lrprth{x,y}}{A_1\times A_2}{\alpha_1\lrprth{x}=\alpha_2\lrprth{y}}
+			\end{align*}
+			\renewcommand{\copyandpaste}{A_1\times_{A} A_2}
+			Notemos que $\copyandpaste\neq\varnothing$, pues si $0_1$, $0_2$ y $0$ son los neutros aditivos de $A_1$, $A_2$ y $A$, respectivamente, entonces $\alpha_1\lrprth{0_1}=0=\alpha_2\lrprth{0_2}$, con lo cual $\lrprth{0_1,0_2}\in\copyandpaste$. Más aún, $\copyandpaste\leq A_1\times A_2$, con $A_1\times A_2$ dotado de la estructura usual de $R$-módulo, pues si $\lrprth{a,b},\lrprth{c,d}\in\copyandpaste$ y $r\in R$, entonces
+			\begin{align*}
+				\alpha_1\lrprth{ra-b}&=r\alpha_1\lrprth{a}-\alpha_1\lrprth{b}\\
+				&=r\alpha_2\lrprth{c}-\alpha_2\lrprth{d}\\
+				&=\alpha_2\lrprth{rc-d},\\
+				&\implies r\lrprth{a,b}-\lrprth{c,d}\in\copyandpaste.
+			\end{align*}
+			Con lo cual $\copyandpaste\in Mod\lrprth{R}$. Así, si $\pi_1$ y $\pi_2$ son las proyecciones canónicas de $\copyandpaste$ sobre $A_1$ y $A_2$, respectivamente, y $\lrprth{x,y}\in\copyandpaste$, entonces $\pi_1,\ \pi_2$ son morfismos de $R$-módulos y 
+			\begin{align*}
+				\alpha_1\pi_1\lrprth{x,y}&=\alpha_1\lrprth{x}=\alpha_2\lrprth{y}=\alpha_2\lrprth{\pi_2\lrprth{x,y}}\\
+				&=\alpha_2\pi_2\lrprth{x,y},\\
+				\implies \alpha_1\pi_1&=\alpha_2\pi_2.
+			\end{align*}
+			Es decir, se tiene que el siguiente diagrama conmuta
+			\begin{align*}
+				\commutativesquare{A=\copyandpaste,B=A_2,C=A_1,D=A,f=\pi_2,g=\pi_1,h=\alpha_2,k=\alpha_1,}.
+			\end{align*}
+			Ahora, si $P\in Mod\lrprth{R}$ y $\catarrow{\beta_1}{P}{A_1},\catarrow{\beta_2}{P}{A_2}$ son morfismos de $R$-módulos tales que $\alpha_1\beta_1=\alpha_2\beta_2$, entonces sea
+			\begin{align*}
+				\descapp{\gamma}{P}{\copyandpaste}{p}{\lrprth{\beta_1\lrprth{p},\beta_2\lrprth{p}}}{.}
+			\end{align*}
+			Notemos que $\gamma$ es un morfismo de $R$-módulos, puesto que $\beta_1$ y $\beta_2$ lo son, y que si $p\in P$ entonces
+			\begin{align*}
+				\pi_1\gamma\lrprth{p}&=\pi_1\lrprth{\beta_1\lrprth{p},\beta_2\lrprth{p}}=\beta_1\lrprth{p}\\
+				\implies \pi_1\gamma&=\beta_1.
+			\end{align*}
+			Análogamente se verifica que $\pi_2\gamma=\beta_2$, con lo cual el siguiente diagrama conmuta
+			\begin{equation*}
+				\commutativesquare{up=t,A=\copyandpaste,B=A_2,C=A_1,D=A,f=\pi_2,g=\pi_1,h=\alpha_2,k=\alpha_1,l=\beta_2,m=\beta_1,n=\gamma,}
+			\end{equation*}
+			Finalmente, si $\catarrow{\gamma'}{P}{\copyandpaste}$ es un morfismo de $R$-módulos tal que $\pi_1\gamma'=\beta_1$ y $\pi_2\gamma'=\beta_2$ y $p\in P$, entonces
+			\begin{align*}
+				\pi_1\gamma'\lrprth{p}&=\beta_1\lrprth{p},\\
+				\pi_2\gamma'\lrprth{p}&=\beta_2\lrprth{p},
+			\end{align*}
+			con lo cual $\gamma'\lrprth{p}=\lrprth{\pi_1\lrprth{\gamma'\lrprth{p}},\pi_2\lrprth{\gamma'\lrprth{p}}}=\lrprth{\beta_1\lrprth{p},\beta_2\lrprth{p}}=\gamma\lrprth{p}$ y por lo tanto $\gamma'=\gamma$.\\
+		\end{proof}
+		\item 
+		\item
+		\item Si $\mathscr{C}$ es una categoría con pull-backs, entonces $\mathscr{C}$ tiene intersecciones finitas.
+		\begin{proof}
+			Si $A\in\mathscr{A}$ y $\lrbrack{\catarrow{\mu_i}{A_i}{A}}_{i\in I}$ es una familia de subobjetos de $A$, con $I$ finito, entonces podemos suponer que $I\neq\varnothing$, pues en caso contrario $\catarrow{1_A}{A}{A}$ es una intersección para la familia de subojetos. Supongamos, pues, que $I=\lrsqp{1,n}$
+		\end{proof}
+	\end{enumerate}	
+\end{document}
