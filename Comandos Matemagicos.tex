@@ -109,8 +109,14 @@
 \newcommand{\ringmodhom}[3]{
 	Hom_{#1}\lrprth{#2,#3}
 }
-\newcommand{\catarrow}[3]{
-	#1:#2\to #3
+\newcommand{\catarrow}[4]{
+	\if #4e
+			#1:#2\twoheadrightarrow #3
+	\else \if #4m
+			#1:#2\hookrightarrow #3
+	\else 	#1:#2\to #3
+	\fi
+	\fi
 }
 \newcommand{\nattrans}[4]{
 	Nat_{\lrsqp{#1,#2}}\lrprth{#3,#4}
@@ -219,15 +225,15 @@
 	A     .tl_set:N = \l_nicolas_shortseq_A_tl,
 	B   .tl_set:N = \l_nicolas_shortseq_B_tl,
 	C .tl_set:N = \l_nicolas_shortseq_C_tl,
-	AtoB      .tl_set:N = \l_nicolas_shortseq_AtoB_tl,
-	BtoC   .tl_set:N = \l_nicolas_shortseq_BtoC_tl,	
+	f      .tl_set:N = \l_nicolas_shortseq_f_tl,
+	g   .tl_set:N = \l_nicolas_shortseq_g_tl,	
 	lcr   .tl_set:N = \l_nicolas_shortseq_lcr_tl,	
 	
 	A		.initial:n =A,
 	B		.initial:n =B,
 	C		.initial:n =C,
-	AtoB    .initial:n =,
-	BtoC   	.initial:n=,
+	f    .initial:n =,
+	g   	.initial:n=,
 	lcr   	.initial:n=lr,
 	
 }
@@ -237,17 +243,20 @@
 	\begin{tikzcd}[ampersand~replacement=\&,#1]
 		\IfSubStr{\l_nicolas_shortseq_lcr_tl}{l}{0 \arrow{r} \&}{}
 		\l_nicolas_shortseq_A_tl
-		\arrow{r}{\l_nicolas_shortseq_AtoB_tl} \&
+		\arrow{r}{\l_nicolas_shortseq_f_tl} \&
 		\l_nicolas_shortseq_B_tl
-		\arrow[r, "\l_nicolas_shortseq_BtoC_tl"] \&
+		\arrow[r, "\l_nicolas_shortseq_g_tl"] \&
 		\l_nicolas_shortseq_C_tl
 		\IfSubStr{\l_nicolas_shortseq_lcr_tl}{r}{ \arrow{r} \& 0}{}
 	\end{tikzcd}
 }
 
 \ExplSyntaxOff
+
 \newcommand{\pushpull}{texto}
 \newcommand{\testfull}{texto}
+\newcommand{\testdiag}{texto}
+\newcommand{\testcodiag}{texto}
 \ExplSyntaxOn
 
 \NewDocumentCommand{\commutativesquare}{O{}m}
@@ -259,7 +268,7 @@
 }
 
 \keys_define:nn {nicolas/commutativesquare}
-{
+{	
 	A     .tl_set:N = \l_nicolas_commutativesquare_A_tl,
 	B   .tl_set:N = \l_nicolas_commutativesquare_B_tl,
 	C .tl_set:N = \l_nicolas_commutativesquare_C_tl,
@@ -274,6 +283,10 @@
 	n .tl_set:N = \l_nicolas_commutativesquare_n_tl,
 	pp .tl_set:N = \l_nicolas_commutativesquare_pp_tl,
 	up .tl_set:N = \l_nicolas_commutativesquare_up_tl,
+	diag .tl_set:N = \l_nicolas_commutativesquare_diag_tl,	
+	codiag .tl_set:N = \l_nicolas_commutativesquare_codiag_tl,		
+	diaga .tl_set:N = \l_nicolas_commutativesquare_diaga_tl,	
+	codiaga .tl_set:N = \l_nicolas_commutativesquare_codiaga_tl,		
 	
 	A		.initial:n =A,
 	B		.initial:n =B,
@@ -289,12 +302,18 @@
 	n	 .initial:n =,
 	pp .initial:n=h,	
 	up .initial:n=f,
+	diag .initial:n=f,
+	codiag .initial:n=f,
+	diaga .initial:n=,
+	codiaga .initial:n=,
 }
 
 \cs_new:Nn \nicolas_commutativesquare:n
 {
 	\renewcommand{\pushpull}{\l_nicolas_commutativesquare_pp_tl}
 	\renewcommand{\testfull}{\l_nicolas_commutativesquare_up_tl}
+	\renewcommand{\testdiag}{\l_nicolas_commutativesquare_diag_tl}
+	\renewcommand{\testcodiag}{\l_nicolas_commutativesquare_codiag_tl}
 	\begin{tikzcd}[ampersand~replacement=\&,#1]
 		\if \pushpull h
 			\if \testfull t
@@ -306,11 +325,20 @@
 			\if \testfull t
 			\&
 			\fi\l_nicolas_commutativesquare_A_tl
+			\if \testdiag t
+				\arrow{dr}[near~end]{\l_nicolas_commutativesquare_diaga_tl}
+			\fi
 			\arrow{r}{\l_nicolas_commutativesquare_f_tl} \arrow{d}[swap]{\l_nicolas_commutativesquare_g_tl} \&
-			\l_nicolas_commutativesquare_B_tl \arrow{d}{\l_nicolas_commutativesquare_h_tl}\\
+			\l_nicolas_commutativesquare_B_tl
+			 \arrow{d}{\l_nicolas_commutativesquare_h_tl}
+			 \if \testcodiag t
+			 \arrow{dl}[near~end,swap]{\l_nicolas_commutativesquare_codiaga_tl}
+			 \fi
+			 \\
 			\if \testfull t
 			\&
-			\fi\l_nicolas_commutativesquare_C_tl \arrow{r}[swap]{\l_nicolas_commutativesquare_k_tl} \& \l_nicolas_commutativesquare_D_tl
+			\fi\l_nicolas_commutativesquare_C_tl
+			\arrow{r}[swap]{\l_nicolas_commutativesquare_k_tl} \& \l_nicolas_commutativesquare_D_tl
 		\else \if \pushpull l
 			\if \testfull t
 			\l_nicolas_commutativesquare_P_tl
@@ -329,7 +357,15 @@
 			\if \testfull t
 			\& \arrow[bend~left]{uul}{\l_nicolas_commutativesquare_m_tl}
 			\fi
-			\l_nicolas_commutativesquare_C_tl \arrow{u}{\l_nicolas_commutativesquare_g_tl}  \& \l_nicolas_commutativesquare_D_tl\arrow{l}{\l_nicolas_commutativesquare_k_tl}\arrow{u}[swap]{\l_nicolas_commutativesquare_h_tl}
+			\l_nicolas_commutativesquare_C_tl\arrow{u}{\l_nicolas_commutativesquare_g_tl}
+			\if \testcodiag t
+			\arrow{ur}[near~start]{\l_nicolas_commutativesquare_codiaga_tl}
+			\fi
+			  \& \l_nicolas_commutativesquare_D_tl\arrow{l}{\l_nicolas_commutativesquare_k_tl}
+			  \if \testdiag t
+			  \arrow{ul}[near~start,swap,crossing~over]{\l_nicolas_commutativesquare_diaga_tl}
+			  \fi
+			\arrow{u}[swap]{\l_nicolas_commutativesquare_h_tl}
 			\fi
 		\fi
 		
@@ -343,7 +379,8 @@
 	\tilde{H}_{#1}\lrprth{#2}
 }
 \newcommand{\copyandpaste}{t}
-
+\newcommand{\moncategory}[2]{Mon_{#1}\lrprth{-,#2}}
+\newcommand{\epicategory}[2]{Mon_{#1}\lrprth{#2,-}}
 \theoremstyle{definition}
 \newtheorem{define}{Definición}
 \newtheorem{lem}{Lema}
@@ -353,3 +390,4 @@
 \newtheorem{prop}{Proposición}
 \newtheorem*{propsn}{Proposición}
 \newtheorem{coro}{Corolario}
+\newtheorem*{obs}{Observación}
