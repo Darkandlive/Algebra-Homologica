@@ -16,9 +16,12 @@
 \usepackage{faktor}
 
 \input{C:/Users/HP/Desktop/respaldo/Documents/Maestria/S2/Algebras de Artin/Comandos Matemagicos}
-\title{Ejercicios 16-}
-\author{Arruti Sebastián Luis Gerardo}
+\title{Ejercicios 16-31}
+\author{Arruti, Sergio}
+\date{}
 \begin{document}
+	\maketitle
+	%Lema para caracterizar monos y epis en Sets y, en consecuencia, en Mod(R)
 	\begin{lem}
 		Sea $f$ un morfismo en $Sets$, entonces
 		\begin{enumerate}[label=$\alph*)$]
@@ -61,6 +64,7 @@
 	\end{lem}
 	\begin{enumerate}[label=\textbf{Ej \arabic*.}]
 	\setcounter{enumi}{15}
+	%16
 		\item La categoría $Sets$ tiene uniones.
 		\begin{proof}
 			Sea $\lrbrack{\catarrow{u_i}{A_i}{A}{m}}$ una familia de subobjetos de un conjunto $A$ y $U:=\bigcup\limits_{i\in I}\Im\lrprth{u_i}$. Si $I=\varnothing$ entonces $U=\varnothing$ y la función vacía $\catarrow{\varnothing_{A}}{\varnothing}{A}{}$ es un subobjeto de $A$  que satisface por vacuidad que $\forall\ i\in I$ $u_i\leq \varnothing_A$. Resta verificar que $\varnothing_A$ satisface la propiedad universal de la unión, para lo cual por vacuidad basta con verificar que si $f\in Hom\lrprth{Sets}$ y $\mu\in\moncategory{Sets}{A}$, entonces $\varnothing_{A}$ es llevado a $\mu$ vía $f$. Si consideramos  la función vacía $\catarrow{\varnothing_B}{\varnothing}{B}{}$, entonces el siguiente diagrama
@@ -105,12 +109,16 @@ Lo anterior, en conjunto a que $\mu$ es inyectiva por ser un mono en $Sets$,  ga
 	\end{align*}
 	Con lo cual $inc$ es llevado a $\mu$ vía $f$ y por tanto es una unión para la familia $\arbtfam{u}{i}{I}$.
 		\end{proof}
+	%17
 		\item
-		\item 
+		%18
+		\item
+		%19 
 		\item Si $\catarrow{f}{A}{B}{m}$ está en una categoría $\mathscr{C}$, entonces $\catarrow{f}{A}{B}{m}$ es una imagen de $f$.
 		\begin{proof}
 			Se tiene que $f$ es un subobjeto y que $f=f1_A$. Si $\catarrow{g}{C}{B}{m}$ es un subobjeto para el cual $\exists\ \catarrow{h}{A}{C}{}$ tal que $f=gh$, entonces $f\leq g$ y por tanto $Im(f)\simeq f$ en $\moncategory{Sets}{B}$.
 		\end{proof}
+	%20
 		\item $Mod\lrprth{R}$ y $Sets$ tienen imágenes epimórficas.
 		\begin{proof}
 			Sea $\catarrow{f}{A}{B}{}$ en $Sets$. Si $f$ es la función vacía $\varnothing_B$ entonces por el Lema 1 se tiene que $f$ es mono y por tanto es una imagen para sí mismo. Así supongamos sin pérdida de generalidad que $A\neq\varnothing$. Luego $B\neq\varnothing$ y se tiene que $\catarrow{inc}{f\lrprth{A}}{B}{}$ es una función no vacía e inyectiva, por tanto un mono en $Sets$, la cual satisface que, si 
@@ -135,8 +143,11 @@ Lo anterior, en conjunto a que $\mu$ es inyectiva por ser un mono en $Sets$,  ga
 			Con lo anterior se ha verificado que $Sets$ tiene imágenes, más aún, tiene  imágenes epimórficas puesto que la función $g$ así construida es suprayectiva y por tanto epi.\\
 			Dado que todo $R$-módulo es en partícular un conjunto no vacío, en forma análoga a lo anterior se verifica que $Mod(R)$ tiene imágenes epimórficas, puesto que si ahora $\catarrow{f}{A}{B}{}$ en $Mod(R)$ entonces la inclusión de módulos es un morfismo de $R$-módulos, $g$ también lo es al serlo $f$, y $k$ lo es al serlo $f$ y $h$.\\
 		\end{proof}
+	%21
 		\item 
+		%22
 		\item
+		%23
 		\item Sean $\mathscr{C}$ una categoría balanceada, con imágenes epimórficas y \begin{equation*}
 			\shortseq{f=f,g=g,lcr=c,}
 		\end{equation*} en $\mathscr{C}$. Si $\catarrow{\mu}{A'}{A}{m}$ en $\mathscr{C}$, entonces  $g\lrprth{f\lrprth{A'}}=gf\lrprth{A'}$ en $\overline{\moncategory{\mathscr{C}}{C}}$.
@@ -162,6 +173,7 @@ Lo anterior, en conjunto a que $\mu$ es inyectiva por ser un mono en $Sets$,  ga
 			\end{align*}
 			En la última igualdad $\eta$ es un mono, mientras que $\alpha_2\alpha_1$ es un epi al serlo $\alpha_1$ y $\alpha_2$, de modo que al ser $\mathscr{C}$ balanceada (ver Proposición 1.4.3) se tiene que $\eta$ es una imagen para $\lrprth{gf}\mu$.\\
 		\end{proof}
+	%24
 		\item Sea el siguiente diagrama 
 		\begin{center}
 			\commutativehouse{A=B'',B=P,C=B',D=A,E=B,f=f',g=\mu,h=\beta_2,k=\beta_1,l=\alpha,m=f,}
@@ -204,8 +216,11 @@ Lo anterior, en conjunto a que $\mu$ es inyectiva por ser un mono en $Sets$,  ga
 			\end{center}	
 		i.e. (\ref{pdpb}) es un pull-back y así se tiene lo deseado.\\
 		\end{proof}
+	%25
 		\item
+		%26
 		\item
+		%27
 		\item Sea $\mathscr{C}$ una categoría con objeto cero. Entonces $\bigcup\limits_{i\in I}A_i\simeq 0$, si $I=\varnothing$.
 		\begin{proof}
 			Afirmamos que en este caso el morfismo $0_{0,A}$  en $\mathscr{C}$ (el cual existe y es único por ser $0$ un objeto cero de la categoría $\mathscr{C}$) es una unión para la familia de subobjetos $\catarrow{\mu_i}{A_i}{A}{}$. En efecto:\\
@@ -220,7 +235,7 @@ Lo anterior, en conjunto a que $\mu$ es inyectiva por ser un mono en $Sets$,  ga
 			\end{center}
 		conmuta y así se tiene lo deseado.\\
 		\end{proof}
-	
+	%28
 		\item $Mod(R)$ es una categoría con objeto cero, en tanto que $Sets$ no lo es.
 		\begin{proof}
 			\boxed{Mod\lrprth{R}} Sea $R$ un anillo. Consideremos un conjunto de la forma $A=\lrbrack{*}$, i.e. un conjunto de un sólo elemento. Notemos que por medio de las operaciones
@@ -246,8 +261,11 @@ Lo anterior, en conjunto a que $\mu$ es inyectiva por ser un mono en $Sets$,  ga
 			Por lo tanto $A$ también es un objeto final y así es un objeto cero para $Mod\lrprth{R}$.\\
 			\boxed{Sets} Supongamos que existe un conjunto $A$ tal qu $A$ es objeto cero de $Sets$. Luego $\exists !\ f\in\ringmodhom{Sets}{A}{\varnothing}$, y así necesariamente $A=\varnothing$, lo cual es absurdo ya que $\varnothing$ no es un objeto final en $Sets$, puesto que si $B\neq \varnothing$ no existen funciones cuyo dominio sea $B$ y contradominio sea $\varnothing$.\\
 		\end{proof}
+	%29
 		\item
+		%30
 		\item
+		%31
 		\item $Sets$ y $Mod(R)$ son categorías localmente pequeñas.
 		\begin{proof}
 			Sea $A\in Sets$. Afirmamos que si $\catarrow{\varphi}{B}{A}{m}$, $\catarrow{\psi}{C}{A}{m}\in\moncategory{Sets}{A}$ entonces
