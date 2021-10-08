@@ -1,0 +1,179 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage[spanish,es-lcroman]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{amsmath,stackengine,scalerel,mathtools}
+\usepackage{xparse, tikz-cd, pgfplots}
+\usepackage{xstring}
+\usepackage{mathrsfs}
+\usepackage{comment}
+\usepackage{faktor}
+
+\input{C:/Users/HP/Desktop/respaldo/Documents/Maestria/S2/Algebras de Artin/Comandos Matemagicos}
+\title{Ejercicios 32-42}
+\author{Arruti, Sergio}
+\date{}
+\begin{document}
+	\maketitle
+	\begin{enumerate}[label=\textbf{Ej \arabic*.}]
+		\setcounter{enumi}{31}
+		%32
+		\item $Mod\lrprth{R}$ es normal y conormal.
+		\begin{proof}
+			Se tiene que, por el Ej. 28, $Mod\lrprth{R}$ tiene objeto cero y más aún, que $\forall\ M,N\in Mod\lrprth{R}$ el morfismo $0$ de $M$ en $N$ está dado por
+			\begin{align*}
+				\descapp{0_{M,N}}{M}{N}{m}{0_N}{,}
+			\end{align*} con $0_N$ el neutro aditivo de $N$. En vista de lo anterior, en lo sucesivo prescindiremos de los subíndices en la notación de los morfismos cero.
+			
+			\boxed{\text{Normal}} Sean $\catarrow{\alpha}{M}{N}{}$ en $Mod\lrprth{R}$, $P:=\faktor{N}{Im\lrprth{\alpha}}$ y $\beta$ el epi canónico dado por
+			\begin{align*}
+				\descapp{\beta}{N}{P}{n}{n+In\lrprth{\alpha}}{.}
+			\end{align*}
+			Afirmamos que $\alpha$ es un kernel para $\beta$. En efecto:\\
+			Dado que $Im\lrprth{\alpha}$ es el neutro aditivo de $P$ y $Im\lrprth{\alpha}=\lrbrack{\alpha\lrprth{m}\ \vline\ m\in M}$, se tiene que $\beta\alpha=0$.\\
+			Supongamos ahora que $\catarrow{\alpha'}{M'}{N}{}$ en $Mod\lrprth{R}$ es tal que $\beta\alpha'=0$, así
+			\begin{align*}
+				\beta\lrprth{\alpha'\lrprth{a}}&=Im\lrprth{\alpha} && \forall\ a\in M'\\
+				\implies Im\lrprth{\alpha'}&\subseteq Im\lrprth{\alpha}
+			\end{align*}
+			De lo cual se sigue que	$\forall\ a\in M' \exists\ b_a\in M$ tal que $\alpha\lrprth{b_a}=\alpha'\lrprth{a}$. Más aún, como $\alpha$ es un monomorfismo se tiene que tal $b_a$ es único, y por lo tanto la siguiente aplicación es una función bien definida
+			\begin{align*}
+				\descapp{\gamma}{M'}{M}{a}{b_a}{.}
+			\end{align*}
+			Sean $r\in R$, $a_1,a_2\in M'$. Así
+			\begin{align*}
+				\alpha\lrprth{b_{ra_1-a_2}}&=\alpha'\lrprth{ra_1-a_2}=r\alpha'\lrprth{a_1}-\alpha\lrprth{a_2}\\
+				&=r\alpha\lrprth{b_{a_1}}-\alpha\lrprth{b_{a_2}}=\alpha\lrprth{rb_{a_1}-b_{a_2}},\\
+				\implies b_{ra_1-a_2}&=rb_{a_1}-b_{a_2}, && \alpha\text{ es mono}\\
+				\implies \gamma\lrprth{ra_1-a_2}&=r\gamma\lrprth{a_1}-\gamma\lrprth{a_2}.
+			\end{align*}
+			Con lo cual $\gamma$ es un morfismo de $R$-módulos que satisface que, si $a\in M'$, entonces
+			\begin{align*}
+				\alpha\gamma\lrprth{a}&=\alpha\lrprth{b_a}=\alpha'\lrprth{a},\\
+				\therefore\ \alpha\gamma=\alpha'.
+			\end{align*}
+			Más aún, puesto que $\alpha$ es mono, $\gamma$ es el único morfismo de $R$-módulos de $M'$ en $M$ que satisface lo anterior, con lo cual se ha verificado la afirmación.\\
+			
+			\boxed{\text{Conormal}} Ahora supongamos que $\catarrow{\alpha}{M}{N}{}$ es epi en $Mod\lrprth{R}$ y denotemos por $\beta$ al morfismo inclusión de $Ker\lrprth{\alpha}$ en $M$. Afirmamos que $\alpha$ es un cokernel para $\beta$, en efecto:\\
+			Como $Ker\lrprth{\alpha}=\lrbrack{m\in M\ \vline\ \alpha\lrprth{m}=0_N}$, entonces $\alpha\beta=0$. Sea $\catarrow{\alpha'}{M}{N'}{}$ en $Mod\lrprth{R}$ tal que $\alpha'\beta=0$, así 
+			\begin{equation*}
+				Ker\lrprth{\alpha'}\supseteq Im\lrprth{\beta}=Ker\lrprth{\alpha}.
+			\end{equation*}
+			Como $\alpha$ es epi se tiene que $N=Im\lrprth{\alpha}$. Así, consideremos la aplicación
+			\begin{align*}
+				\descapp{\gamma}{N}{N'}{\alpha\lrprth{m}}{\alpha'\lrprth{m}}{,}
+			\end{align*}
+			la cual es una función bien definida, puesto que si $m,o\in M$ son tales que $\alpha\lrprth{m}=\alpha\lrprth{o}$, entonces
+			\begin{align*}
+				m-o&\in Ker\lrprth{\alpha}\subseteq Ker\lrprth{\alpha'}\\
+				\implies \alpha'\lrprth{m}&=\alpha'\lrprth{o}.
+			\end{align*}
+			Más aún, es un morfismo de $R$-módulos, pues $\alpha$ y $\alpha'$ lo son, que satisface que $\gamma\alpha=\alpha'$. Finalmente $\gamma$ es el único morfismo de $R$-módulos que satisface la igualdad anterior dado que $\alpha$ es epi.\\
+		\end{proof}
+		%33
+		\item 
+		%34
+		\item 
+		%35
+		\item Construiremos la noción dual a la intersección de una familia de subobjetos.\\
+		\textbf{Intersección:} $\catarrow{\mu}{B}{A}{}$ es una intersección para $\lrbrack{\catarrow{\mu_i}{A_i}{A}{m}}$ en $\mathscr{C}$ si \begin{enumerate}[label=Int\Roman*)]
+			\item $\forall\ i\in I$ $\exists\ \catarrow{\lambda_i}{B}{A_i}{}$ tal que $\mu=\mu_i\lambda_i$;
+			\item si $\catarrow{\nu}{C}{A}{}$ satisface que $\forall\ i\in I$ $\exists\ \catarrow{\eta_i}{C}{A_i}{}$ tal que $\nu=\mu_i\eta_i$, entonces $\exists\ \catarrow{\eta}{C}{B}{}$ tal que $\nu=\mu\eta$.
+		\end{enumerate}
+		\textbf{Intersección\textsuperscript{op}:} $\catarrow{\opst{\mu}}{B}{A}{}$ es una intersección para $\lrbrack{\catarrow{\opst{\mu_i}}{A_i}{A}{m}}$ en $\mathscr{C}$ si\begin{enumerate}[label=Int\textsuperscript{op}\Roman*)]
+			\item $\forall\ i\in I$ $\exists\ \catarrow{\opst{\lambda_i}}{B}{A_i}{}$ tal que $\opst{\mu}=\opst{\mu_i}\opst{\lambda_i}$;
+			\item si $\catarrow{\opst{\nu}}{C}{A}{}$ satisface que $\forall\ i\in I$ $\exists\ \catarrow{\opst{\eta_i}}{C}{A_i}{}$ tal que $\opst{\nu}=\opst{\mu_i}\opst{\eta_i}$, entonces $\exists\ \catarrow{\opst{\eta}}{C}{B}{}$ tal que $\opst{\nu}=\opst{\mu}\opst{\eta}$.
+		\end{enumerate}
+		Así, aplicando el funtor $D_{\opst{\mathscr{C}}}$ a las flechas que aparecen en lo anterior, y sabiendo que el dual de mono es epi, se llega a la siguiente definición
+		\textbf{Intersección\textsuperscript{*}:}
+		\begin{definesn}
+			$\catarrow{\beta}{A}{B}{}$ es una \textbf{cointersección} para $\lrbrack{\catarrow{\beta_i}{A}{A_i}{e}}$ en $\mathscr{C}$ si
+		\begin{enumerate}[label=Coint\Roman*)]
+			\item $\forall\ i\in I$ $\exists\ \catarrow{\delta_i}{A_i}{B}{}$ tal que $\beta=\delta_i\beta_i$;
+			\item si $\catarrow{\omega}{A}{C}{}$ satisface que $\forall\ i\in I$ $\exists\ \catarrow{\gamma_i}{A_i}{C}{}$ tal que $\omega=\gamma_i\beta_i$, entonces $\exists\ \catarrow{\gamma}{B}{C}{}$ tal que $\omega=\gamma\beta$.
+		\end{enumerate}
+		\end{definesn}		
+		%36
+				\renewcommand{\copyandpaste}{i\in I}
+		\item Sean $\mathscr{C}$ una categoría exacta y $\catarrow{\theta}{A}{A'}{e}$, $\lrbrack{\catarrow{\alpha_i}{A_i}{A}{m}}_{i\in I}$  y, $\forall\ i\in I$, $\beta_i:=coker\lrprth{\alpha_i}$, en $\mathscr{C}$. Si $\theta$ es una cointersección para $\lrbrack{\beta_i}_{i\in I}$, entonces $ker\lrprth{\theta}$ es una unión para $\lrbrack{\alpha_i}_{i\in I}$.
+		\begin{proof}
+			Denotemos por $k_{\theta}$ un kernel de $\theta$. Se tiene que $k_{\theta}$ es un subobjeto de $A$.\\
+			\boxed{I=\varnothing} En este caso, por la vacuidad de $I$, basta con verificar que si $\catarrow{f}{A}{B}{}$ y $\catarrow{\mu}{B'}{B}{m}$, entonces $\theta$ es llevado a $\mu$ vía $f$. Notemos que por vacuidad $f$ satisface la condición CointI) para la familia $\lrbrack{\beta_i}_{\copyandpaste}$, y así por la propiedad universal de la cointersección, CointII), $\exists\ \catarrow{\gamma}{A'}{B}{}$ tal que $f=\gamma \theta$. Con lo cual $fk_{\theta}=f\gamma\lrprth{\theta k_{\theta}}=0$, y por tanto si denotamos por $\rho$ al morfismo $0$ de $A$ en $B'$ se tiene que
+			\begin{equation*}
+				fk_{\theta}=0=\rho\mu,
+			\end{equation*}
+			i.e. $\theta$ es llevado a $\mu$ vía $f$.\\
+			
+			\boxed{I\neq\varnothing} Dado que $\theta$ es una cointersección para $\lrbrack{\beta_i}_{\copyandpaste}$ se tiene en partícular que $\forall\ i\in I\ \exists$ $\catarrow{\eta_i}{\faktor{A}{A_i}}{A'}{}$ tal que $\theta=\eta_i\beta_i$, así
+			\begin{align*}
+				\theta\alpha_i&=\lrprth{\eta_i\beta_i}\alpha_i=\eta_i\lrprth{\beta_i\alpha_i}=0, && \beta_i=coker\lrprth{\alpha_i}
+			\end{align*}
+			Luego para cada $i\in I$, por la propiedad universal del kernel, se tiene que $\exists !\ \catarrow{\lambda_i}{A_i}{Ker\lrprth{\theta}}{}$ tal que $\alpha_i=k_{\theta}\lambda_i$. Por lo tanto $\forall\ \copyandpaste$ $\alpha_i\leq k_{\theta}$.\\
+			
+			Ahora, sean $\catarrow{f}{A}{B}{}$ y $\catarrow{\mu}{B'}{B}{m}$ en $\mathscr{C}$ tales que $\alpha_i$ es llevado a $\mu$ vía $f$, $\forall\ i\in I$, i.e., tales que $\forall\ \copyandpaste$ $\exists\ \catarrow{\rho_i}{A_i}{B'}{}$ de modo que el siguiente diagrama conmuta
+			\begin{equation*}\tag{*}\label{pdc}
+				\commutativesquare{A=A_i,B=B',C=A,D=B, f=\rho_i,g=\alpha_i,h=\mu,k=f,}
+			\end{equation*}
+			Si $c_{\mu}$ es un cokernel para $\mu$, entonces por lo anterior se tiene que
+			\begin{align*}
+				\lrprth{c_{\mu}f}\alpha_i&=\lrprth{c_{\mu}\mu}\rho_i=0, && \forall\ \copyandpaste
+			\end{align*}
+			Luego, aplicando para cada $i\in I$ la propiedad universal del cokernel, se tiene que $\forall\ \copyandpaste$ $\exists !$ $\catarrow{\chi_i}{\faktor{A}{A_i}}{\faktor{B}{B'}}{}$ tal que 
+			\begin{align*}
+				c_{\mu}f&=\chi_icoker\lrprth{\mu_i}=\chi_i\beta_i.
+			\end{align*}
+			Esto último, por la propiedad universal de la cointersección, garantiza que $\exists\ \catarrow{\chi}{A'}{\faktor{B}{B'}}{}$ tal que el siguiente diagrama conmuta
+			\begin{equation*}\tag{**}\label{sdc}
+				\commutativesquare{C=A',D=\faktor{B}{B'},f=f,g=\theta,h=c_{\mu},k=\chi,}
+			\end{equation*}
+			De (\ref{pdc}) y (\ref{sdc}) se sigue que
+			\begin{align*}
+				c_{\mu}\lrprth{fk_{\theta}}&=\chi\lrprth{\theta k_{\theta}}\\
+				&=0,
+			\end{align*}
+			lo cual, en conjunto a que 
+			\begin{align*}
+				\mu\simeq Im\lrprth{\mu}\simeq Ker\lrprth{Coker\lrprth{\mu}}\simeq Ker\lrprth{c_{\mu}}, && \text{en }\moncategory{\mathscr{C}}{B}
+			\end{align*}
+			(pues  $\mathscr{C}$ es exacta y $\mu$ es mono) garantiza que por medio de la propiedad universal del kernel $\exists !$ $\catarrow{\rho}{Ker\lrprth{\theta}}{B'}{}$ tal que $fk_{\theta}=\rho\mu$, i.e. el siguiente diagrama conmuta
+			\begin{center}
+				\commutativesquare{A=Ker\lrprth{\theta},B=B',C=A,D=B,f=\rho,g=k_{\theta},h=\mu,k=f,}
+			\end{center}
+			y así se tiene lo deseado.\\
+		\end{proof}
+		%37
+		\item 
+		%38
+		\item 
+		%39
+		\item Sean $\mathscr{C}$ una categoría y $\lrbrack{A_i}_{i\in I}$ en $\mathscr{C}$. Si $I=\varnothing$ y dicha familia admite un coproducto, entonces este es un objeto inicial en $\mathscr{C}$.
+		\begin{proof}
+			Se tiene que, por definición, dada una familia de objetos $\arbtfam{A}{i}{I}$, un objeto $C$ en conjunto a una familia de morfismos $\lrbrack{\catarrow{\mu_i}{A_i}{C}{}}$ es un coproducto para $\arbtfam{A}{i}{I}$ si $\forall\ B\in\mathscr{text}$ y $\forall\ \lrbrack{\catarrow{\beta_i}{A_i}{B}{}}$ $\exists !$ $\catarrow{\alpha}{C}{B}{}$ tal que $\beta_i=\alpha\mu_i$. De modo que si $I=\varnothing$ lo anterior se reduce a que $\forall\ B\in\mathscr{C}$ existe un único morfismo $\alpha\in\ringmodhom{\mathscr{C}}{C}{B}$, i.e. $C$ es un objeto inicial en $\mathscr{C}$.\\
+			Notemos que, más aún, si $C$ es un objeto inicial entonces $C$ en conjunto una familia vacía de morfismos es un coproducto para cualquier familia vacía de objetos en $\mathscr{C}$.\\
+		\end{proof}
+		%40
+		\item  Sean $\mathscr{C}$ una categoría, $C\in\mathscr{C}$ y $\lrbrack{\catarrow{\mu_i}{A_i}{C}{}}_{\copyandpaste}$ en $\mathscr{C}$.  $C$ y $\lrbrack{\catarrow{\mu_i}{A_i}{C}{}}_{\copyandpaste}$ es un coproducto para $\lrbrack{A_i}_{\copyandpaste}$ en $\mathscr{C}$ si y sólo si $C$ y $\lrbrack{\catarrow{\opst{\mu_i}}{C}{A_i}{}}_{\copyandpaste}$ es un producto para $\lrbrack{A_i}_{\copyandpaste}$ en $\opst{\mathscr{C}}$.
+		\begin{proof}
+			Si $I=\varnothing$ la equivalencia se sigue de los ejercicios 37 y 39, y que $A\in\mathscr{C}$ es un objeto inicial si y sólo si $A\in\opst{\mathscr{C}}$ es un objeto final. En adelante supondremos que $I\neq\varnothing$.
+						
+			Para la necesidad comencemos notando que $C$ también es un objeto de $\opst{\mathscr{C}}$. Sean $A$ y $\lrbrack{\catarrow{\opst{\gamma}_i}{A}{A_i}{}}_{\copyandpaste}$ en $\opst{\mathscr{C}}$, luego $A$ es un objeto de $\mathscr{C}$ y $\lrbrack{\catarrow{{\gamma}_i}{A_i}{A}{}}$ es una familia de morfismos en $\mathscr{C}$, con lo cual por la propiedad universal del coproducto $\exists !$ $\catarrow{\alpha}{C}{A}{}$ tal que $\forall\ i\in I$ $\gamma_i=\alpha\mu_i$ en $\mathscr{C}$. De modo que $\opst{\alpha}$ satisface que $\opst{\alpha}\in\ringmodhom{\opst{\mathscr{C}}}{A}{C}$ y $\forall\ \copyandpaste$ $\opst{\gamma}_i=\opst{\mu_i}\opst{\alpha}$. Finalmente, si suponemos que $\catarrow{\opst{\beta}}{A}{C}{}$ satisface que $\forall\ \copyandpaste$ $\opst{\gamma}_i=\opst{\mu_i}\opst{\beta}$, entonces $\beta\in\ringmodhom{\mathscr{C}}{C}{A}$ y $\forall\ \copyandpaste$ $\gamma=\beta\mu_i$. De esto último y la unicidad de $\alpha$ se sigue que ${\beta}={\alpha}$ en $\mathscr{C}$, y así  $\opst{\beta}=\opst{\alpha}$ en $\opst{\mathscr{C}}$, con lo cual se tiene lo dseeado.
+			
+			La suficiencia se verifica en forma análoga, puesto que tomar una familia de morfismos en la categoría $\mathscr{C}$ induce una familia de morfismos en $\opst{\mathscr{C}}$, empleando ahora la propiedad universal del producto.\\
+		\end{proof}
+		%41
+		\item 
+		%42
+
+		\item Sean $\mathscr{C}$ una categoría, $\lrbrack{\catarrow{\mu_i}{A_i}{\coprod\limits_{i\in I}A_i}{}}$ un coproducto en $\mathscr{C}$, $C\in\mathscr{C}$ y $\lrbrack{\catarrow{\nu_i}{A_i}{C}{C}}_{\copyandpaste}$. Entonces las siguientes condiciones son equivalentes:
+		\begin{enumerate}[label=\textit{\alph*)}]
+			\item $C$ y $\lrbrack{\catarrow{\nu_i}{A_i}{C}{C}}_{\copyandpaste}$ son un coproducto de $\lrbrack{A_i}_{\copyandpaste}$;
+			\item $\exists\ \catarrow{\varphi}{\coprod\limits_{i\in I}A_i}{C}{i}$ tal que $\forall\ i\in I$ $\varphi\mu_i=\nu_i$.
+		\end{enumerate}
+	\end{enumerate}		
+\end{document}
