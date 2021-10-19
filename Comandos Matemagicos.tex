@@ -75,6 +75,10 @@
 \newcommand{\zend}[2]{
 	End_{\mathbb{Z}}^{#2}\lrprth{#1}
 }
+\newcommand{\cend}[2]{
+	End_{#1}\lrprth{#2}
+}
+\newcommand{\catmatrix}[4]{Mat_{#1\times #2}\lrprth{#3,#4}}
 \newcommand{\genmod}[2]{
 	\left< #1\right>_{#2}
 }
@@ -114,7 +118,10 @@
 			#1:#2\twoheadrightarrow #3
 	\else \if #4m
 			#1:#2\hookrightarrow #3
-	\else 	#1:#2\to #3
+	\else \if #4i
+		    #1:#2\tilde{\to} #3
+			\else #1:#2\to #3
+	\fi
 	\fi
 	\fi
 }
@@ -374,6 +381,61 @@
 
 \ExplSyntaxOff
 
+\ExplSyntaxOn
+
+\NewDocumentCommand{\commutativehouse}{O{}m}
+{
+	\group_begin:
+	\keys_set:nn {nicolas/commutativehouse}{#2}
+	\nicolas_commutativehouse:n {#1}
+	\group_end:
+}
+
+\keys_define:nn {nicolas/commutativehouse}
+{	
+	A     .tl_set:N = \l_nicolas_commutativehouse_A_tl,
+	B   .tl_set:N = \l_nicolas_commutativehouse_B_tl,
+	C .tl_set:N = \l_nicolas_commutativehouse_C_tl,
+	D .tl_set:N = \l_nicolas_commutativehouse_D_tl,
+	E .tl_set:N = \l_nicolas_commutativehouse_E_tl,
+	f      .tl_set:N = \l_nicolas_commutativehouse_f_tl,
+	g   .tl_set:N = \l_nicolas_commutativehouse_g_tl,
+	h   .tl_set:N = \l_nicolas_commutativehouse_h_tl,
+	k .tl_set:N = \l_nicolas_commutativehouse_k_tl,
+	l .tl_set:N = \l_nicolas_commutativehouse_l_tl,
+	m .tl_set:N = \l_nicolas_commutativehouse_m_tl,
+	diag .tl_set:N = \l_nicolas_commutativehouse_diag_tl,	
+	codiag .tl_set:N = \l_nicolas_commutativehouse_codiag_tl,		
+	diaga .tl_set:N = \l_nicolas_commutativehouse_diaga_tl,	
+	codiaga .tl_set:N = \l_nicolas_commutativehouse_codiaga_tl,		
+	
+	A		.initial:n =A,
+	B		.initial:n =B,
+	C		.initial:n =C,
+	D		.initial:n =D,
+	E		.initial:n =E,
+	f    .initial:n =f,
+	g    .initial:n =g,
+	h    .initial:n =h,
+	k    .initial:n =k,
+	l    .initial:n =l,
+	m    .initial:n =m,	
+	diag .initial:n=f,
+	codiag .initial:n=f,
+	diaga .initial:n=,
+	codiaga .initial:n=,
+}
+
+\cs_new:Nn \nicolas_commutativehouse:n
+{
+	\begin{tikzcd}[ampersand~replacement=\&,#1]
+		\& \l_nicolas_commutativehouse_A_tl  \arrow{dr}{\l_nicolas_commutativehouse_g_tl} \& \\
+		\l_nicolas_commutativehouse_B_tl \arrow{ur}{\l_nicolas_commutativehouse_f_tl}\arrow{rr}{\l_nicolas_commutativehouse_h_tl}\arrow{d}[swap]{\l_nicolas_commutativehouse_k_tl} \& \&  \l_nicolas_commutativehouse_C_tl\arrow{d}{\l_nicolas_commutativehouse_l_tl} \\
+		\l_nicolas_commutativehouse_D_tl\arrow[swap]{rr}{\l_nicolas_commutativehouse_m_tl}\& \& \l_nicolas_commutativehouse_E_tl
+	\end{tikzcd}
+}
+
+\ExplSyntaxOff
 
 \newcommand{\redhomlgy}[2]{
 	\tilde{H}_{#1}\lrprth{#2}
@@ -383,6 +445,7 @@
 \newcommand{\epicategory}[2]{Mon_{#1}\lrprth{#2,-}}
 \theoremstyle{definition}
 \newtheorem{define}{Definición}
+\newtheorem*{definesn}{Definición}
 \newtheorem{lem}{Lema}
 \newtheorem*{lemsn}{Lema}
 \newtheorem{teor}{Teorema}
