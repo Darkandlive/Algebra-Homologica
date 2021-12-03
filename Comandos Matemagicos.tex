@@ -1,8 +1,11 @@
 
 \def\subnormeq{\mathrel{\scalerel*{\trianglelefteq}{A}}}
+\newcommand{\properideal}{%
+	\mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+\newcommand{\radofset}[1]{rad\lrprth{#1}}
+\newcommand{\spectrumring}[1]{Spec\lrprth{#1}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\La}{\mathscr{L}}
-\newcommand{\N}{\mathbb{N}}
 \newcommand{\crdnlty}[1]{
 	\left|#1\right|
 }
@@ -79,7 +82,7 @@
 \newcommand{\cend}[2]{
 	End_{#1}\lrprth{#2}
 }
-\newcommand{\catmatrix}[4]{Mat_{#1\times #2}\lrprth{#3,#4}}
+\newcommand{\catmatrix}[4]{Mat_{#1\times #2}\lrprth{#3,#4}hom}
 \newcommand{\genmod}[2]{
 	\left< #1\right>_{#2}
 }
@@ -441,9 +444,13 @@
 \newcommand{\redhomlgy}[2]{
 	\tilde{H}_{#1}\lrprth{#2}
 }
+\newcommand{\nilrad}[1]{nil\lrprth{#1}}
+\newcommand{\ringofpoly}[2]{#1\lrsqp{#2}}
+\newcommand{\ringunits}[1]{U\lrprth{#1}}
+\newcommand{\affspace}[2]{\mathds{A}^{#1}\lrprth{#2}}
 \newcommand{\copyandpaste}{t}
 \newcommand{\moncategory}[2]{Mon_{#1}\lrprth{-,#2}}
-\newcommand{\epicategory}[2]{Mon_{#1}\lrprth{#2,-}}
+\newcommand{\epicategory}[2]{Epi_{#1}\lrprth{#2,-}}
 \theoremstyle{definition}
 \newtheorem{define}{Definición}
 \newtheorem*{definesn}{Definición}
