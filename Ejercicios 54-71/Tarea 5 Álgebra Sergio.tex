@@ -1,0 +1,532 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage[spanish,es-lcroman]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{amsmath,stackengine,scalerel,mathtools}
+\usepackage{xparse, tikz-cd, pgfplots}
+\usepackage{xstring}
+\usepackage{mathrsfs}
+\usepackage{comment}
+\usepackage{faktor}
+\usepackage[all]{xy}
+
+\newcommand{\spmat}[1]{%
+  \left(\begin{smallmatrix}#1\end{smallmatrix}\right)%
+}
+
+
+
+
+\input{C:/Users/Darkandlive/Desktop/Latex/Álgebra/Tercer semestre/Comandos Matemagicos}
+\title{Ejercicios 43-53}
+\author{Luis Gerardo Arruti Sebastian\\ Sergio Rosado Zúñiga}
+\date{}
+\begin{document}
+	\maketitle
+	\begin{enumerate}[label=\textbf{Ej \arabic*.}]
+		\setcounter{enumi}{53}
+\item Sea $G:\mathscr{A}\longrightarrow \mathscr{B}$ un funtor contravariante entre categorías abelianas. Pruebe que las siguientes condiciones son
+equivalentes:
+\begin{itemize}
+\item[a)] $G$ es exacto a izquierda (derecha).
+\item[b)] $G_{op}:=G\circ D_{\mathscr{A}^{op}}\colon\mathscr{A}^{op}\longrightarrow\mathscr{B}$ es exacto a izquierda (derecha).
+\item[c)] $G^{op}:= D_{\mathscr{B}}\circ G\colon\mathscr{A}\longrightarrow\mathscr{B}^{op}$ es exacto a derecha (izquierda).
+\end{itemize}
+\begin{proof}
+\boxed{a)\Rightarrow b)} Supongamos $G$ es exacta a izquierda.\\
+
+Observamos que, como $D_{\mathscr{A}^{op}}$ es contravariante, entonces $G_{op}$ es covariante. Sea 
+\xymatrix{0\ar[r]&M_1\ar[r]^{f_1^{op}}&M_2\ar[r]^{f_2^{op}}&M_3} una sucesión exacta en $\mathscr{A}^{op}$. 
+Como $\mathscr{A}$ y $\mathscr{B}$ son categorías abelianas en particular son exactas y $\mathscr{A}^{op}$, $\mathscr{B}^{op}$ también lo son, 
+así, \xymatrix{M_3\ar[r]^{f_2}&M_2\ar[r]^{f_1}&M_1\ar[r]&0} es exacta en $\mathscr{A}$, y como $G$ es exacto a izquierda, entonces \\
+\xymatrix{0\ar[r]&G(M_1)\ar[r]^{G(f_1)}&G(M_2)\ar[r]^{G(f_2)}&G(M_3)} es exacta.\\
+
+Como $G(f_i)=G\circ D_{\mathscr{A}^{op}}(f_i^{op})$ para $i\in \{1,2\}$, y $G(M_j)=G\circ D_{\mathscr{A}^{op}}(M_j)$ para $j\in \{1,2,3\}$, entonces
+\xymatrix{0\ar[r]&G_{op}(M_1)\ar[r]^{G_{op}(f_1^{op})}&G_{op}(M_2)\ar[r]^{G_{op}(f_2^{op})}&G_{op}(M_3)} es exacta
+ y en consecuencia $G_{op}$ es exacta a izquierda.\\
+
+\boxed{b)\Rightarrow a)} Supongamos $G_{op}$ es exacta a izquierda.\\
+
+Sea \xymatrix{M_3\ar[r]^{f_2}&M_2\ar[r]^{f_1}&M_1\ar[r]&0} una sucesión exacta en $\mathscr{A}$, entonces 
+\xymatrix{0\ar[r]&M_1\ar[r]^{f_1^{op}}&M_2\ar[r]^{f_2^{op}}&M_3} es exacta en $\mathscr{A}^{op}$. Como $G_{op}$ es exacta a izquierda
+\xymatrix{0\ar[r]&G_{op}(M_1)\ar[r]^{G_{op}(f_1^{op})}&G_{op}(M_2)\ar[r]^{G_{op}(f_2^{op})}&G_{op}(M_3)} es exacta en $\mathscr{B}$,
+pero $G_{op}(M_i)=G(M_i)$ para $i\in\{1,2,3\}$ y $G(f_i)=G\circ D_{\mathscr{A}^{op}}(f_i^{op})$ para $i\in \{1,2\}$ entonces 
+\xymatrix{0\ar[r]&G(M_1)\ar[r]^{G(f_1)}&G(M_2)\ar[r]^{G(f_2)}&G(M_3)} es exacta en $\mathscr{B}$ y en consecuencia $G$ es exacta.\\
+
+\boxed{a)\Rightarrow c)} Supongamos $G$ es exacta a izquierda.\\
+
+Observemos que $G^{op}$ es covariante por ser $ D_{\mathscr{B}}$ contravariante. Sea  \\ 
+\xymatrix{M_1\ar[r]^{f_1}&M_2\ar[r]^{f_2}&M_3\ar[r]&0} una sucesión exacta en $\mathscr{A}$, entonces \\
+\xymatrix{0\ar[r]&G(M_3)\ar[r]^{G(f_2)}&G(M_2)\ar[r]^{G{(f_1)}}&G(M_1)} es exacta en $\mathscr{B}$ por ser $G$ exacta, así por 1.7.3
+\xymatrix{G(M_1)\ar[r]^{(G(f_1))^{op}}&G(M_2)\ar[r]^{(G(f_2))^{op}}&G(M_3)\ar[r]&0}es exacta en $\mathscr{B}^{op}$.
+Pero $ D_{\mathscr{B}}$ manda \xymatrix{B\ar[r]^{f^{op}}&A} en \xymatrix{A\ar[r]^f&B}, entonces \\$G(M_i)=D_{\mathscr{B}}\circ G(M_i)$
+para $i\in \{1,2,3\}$ y $D_{\mathscr{B}}\circ G(f_j)=(G(f_j))^{op}$ para $j\in \{1,2\}$, así
+\xymatrix{G^{op}(M_1)\ar[r]^{G^{op}(f_1)}&G^{op}(M_2)\ar[r]^{G^{op}(f_2)}&G^{op}(M_3)\ar[r]&0} es exacta en $\mathscr{B}^{op}$, y así
+$G^{op}$ es exata a derecha.\\
+
+\boxed{c)\Rightarrow a)} Supongamos $G^{op}$ es exacta a derecha.\\
+
+Sea \xymatrix{M_1\ar[r]^{f_1}&M_2\ar[r]^{f_2}&M_3\ar[r]&0} una sucesión exacta en $\mathscr{A}$ entonces, como $G^{op}$ es exacta a derecha,\\
+\xymatrix{G^{op}(M_1)\ar[r]^{G^{op}(f_1)}&G^{op}(M_2)\ar[r]^{G^{op}(f_2)}&G^{op}(M_3)\ar[r]&0} es exacta en $\mathscr{B}^{op}$. \\Asi 
+\xymatrix{0\ar[r]&G^{op}(M_3)\ar[r]^{(G^{op}(f_2))^{op}}&G^{op}(M_2)\ar[r]^{(G^{op}(f_1))^{op}}&G^{op}(M_1)} es exacta en $\mathscr{B}$
+pero $G(M_i)=D_{\mathscr{B}}\circ G(M_i)$ para $i\in \{1,2,3\}$ y $D_{\mathscr{B}}\circ G(f_j)=(G(f_j))^{op}$ para $j\in \{1,2\}$.
+Entonces \xymatrix{0\ar[r]&G(M_3)\ar[r]^{G(f_2)}&G(M_2)\ar[r]^{G{(f_1)}}&G(M_1)} es exacto, es decir, $G$ es exacto a izquierda.\\
+
+ Las equivalencias entre 
+\begin{itemize}
+\item[a)] $G$ es exacto a derecha.
+\item[b)] $G_{op}:=G\circ D_{\mathscr{A}^{op}}\colon\mathscr{A}^{op}\longrightarrow\mathscr{B}$ es exacto a derecha.
+\item[c)] $G^{op}:= D_{\mathscr{B}}\circ G\colon\mathscr{A}\longrightarrow\mathscr{B}^{op}$ es exacto a izquierda.
+\end{itemize}
+
+se demuestra de manera análoga a lo anterior.
+
+\end{proof}
+
+\item
+\item
+
+\item Sea $F:\mathscr{A}\longrightarrow \mathscr{B}$ un funtor entre categorías abelianas. Pruebe que $F$ es exacto izquierdo $\iff$ 
+$F_{op}^{op}:=D_{\mathscr{B}}\circ F \circ  D_{\mathscr{A}^{op}}\colon \mathscr{A}^{op}\longrightarrow\mathscr{B}^{op}$ es exacto a 
+derecha.
+\begin{proof}
+Primero observemos que $F_{op}^{op}=(F_{op})^{op}=(F^{op})_{op}\,\\ F=(F^{op})^{op}$\,\,\, y \,\,\, $F=(F_{op})_{op}$. 
+Esto pasa por lo siguiente:
+
+\begin{gather*}
+(F_{op})^{op}=D_{\mathscr{B}}\circ F_{op}=D_{\mathscr{B}}\circ F\circ D_{\mathscr{A}^{op}}=F_{op}^{op}.\\
+(F^{op})_{op}=F^{op}\circ D_{\mathscr{A}^{op}}=D_{\mathscr{B}}\circ F\circ D_{\mathscr{A}^{op}}=F_{op}^{op}.\\
+(F^{op})^{op}=D_{\mathscr{B}^{op}}\circ D_{\mathscr{B}}\circ F=1_{\mathscr{B}}F=F.\\
+(F_{op})_{op}=F\circ D_{\mathscr{A}^{op}}\circ D_{\mathscr{A}}=F1_\circ D_{\mathscr{A}}=F.
+\end{gather*}
+
+Caso 1) $F$ es covariante.\\
+
+En este caso se tiene que, como $D_{\mathscr{C}}:\mathscr{C}\longrightarrow \mathscr{C}^{op}$ es un funtor contravariante para cualquier 
+categoría $\mathscr{C}$ , entonces $F_{op}^{op}$ es covariante y $F_{op}$ es contravariante. Como $F_{op}^{op}=(F_{op})^{op}$ entonces
+por el ejercicio 54 $F_{op}^{op}$ es exacto a derecha si y sólo si $F_{op}$ es exacto a izquierda, y como $(F_{op})_{op}=F$, entonces 
+$F_{op}$ es exacto a izquierda si y sólo si $(F_{op})_{op}=F$ es exacto a izquierda.\\
+
+Caso 2) $F$ es contravariante.\\
+
+En este caso se tiene que $F_{op}^{op}$ es contravariante y $F_{op}$ es covariante. Como $F$ es contravariante entonces por el ejercicio 54
+$F_{op}$ es exacto a izquierda si y sólo si $F$ es exacto a izquierda, y como $(F_{op}^{op})^{op}=((F_{op})^{op})^{op}=F^{op}$ entonces 
+por el ejercicio 54 $F_{op}^{op}$ es exacto a derecha si y sólo si \\$(F_{op}^{op})^{op}=F^{op}$ es exacto a izquierda. Por lo tanto
+$F$ es exacto a izquierda si y sólo si $F_{op}^{op}$ es exacta a derecha.
+
+\end{proof}
+
+\item Para un funtor $F:\mathscr{A}\longrightarrow \mathscr{B}$ entre categorías abelianas, pruebe que las siguientes condiciones son equivalentes.
+
+\begin{itemize}
+\item[a)] $F$ es exacto a derecha.
+\item[b)] $F$ preserva cokernels, i.e.\\
+ $F(Coker(\xymatrix{X\ar[r]^\alpha& Y}))\simeq Coker(\xymatrix{F(X)\ar[r]^{F(\alpha)}& F(Y)})$.
+\item[c)] Para toda sucesión exacta \xymatrix{0\ar[r]&K\ar[r]^f&L\ar[r]^g&M\ar[r]&0} en $\mathscr{A}$, se tiene que 
+\xymatrix{F(K)\ar[r]^{F(f)}&F(L)\ar[r]^{F(g)}&F(M)\ar[r]&0} es exacta en $\mathscr{B}$.
+\end{itemize}
+\begin{proof}
+\boxed{a)\iff c)} Por el ejercicio 57 se tiene que \\$F_{op}^{op}$ es exacto a izquierda $\iff$ $(F_{op}^{op})^{op}_{op}$ es exacto a derecha,
+pero \[(F_{op}^{op})^{op}_{op}=\{[(F_{op})^{op}]^{op}\}_{op}=(f_{op})_{op}=F\] por lo tanto 
+ $F_{op}^{op}$ es exacto a izquierda $\iff$ $F$ es exacto a derecha.\\
+
+Así por 1.10.3 las siguientes condiciones son equivalentes:
+
+\begin{itemize}
+\item[a*)] $F_{op}^{op}$ es exacto a derecha.
+\item[b*)] $F_{op}^{op}$ preserva kernels.
+\item[c*)] Para toda sucesión exacta \xymatrix{0\ar[r]&K\ar[r]^f&L\ar[r]^g&M\ar[r]&0} en $\mathscr{A}^{op}$, se tiene que 
+\xymatrix{0\ar[r]&F_{op}^{op}(K)\ar[r]^{F_{op}^{op}(f)}&F_{op}^{op}(L)\ar[r]^{F_{op}^{op}(g)}&F_{op}^{op}(M)} es exacta 
+en $\mathscr{B}^{op}$.
+\end{itemize}
+
+Entonces $F$ es exacta a izquierda si y sólo si \\
+para toda sucesión exacta \xymatrix{0\ar[r]&K\ar[r]^f&L\ar[r]^g&M\ar[r]&0} en $\mathscr{A}^{op}$, se tiene que 
+\xymatrix{0\ar[r]&F_{op}^{op}(K)\ar[r]^{F_{op}^{op}(f)}&F_{op}^{op}(L)\ar[r]^{F_{op}^{op}(g)}&F_{op}^{op}(M)} es exacta 
+en $\mathscr{B}^{op}$ si y sólo si\\
+Para toda sucesión exacta \xymatrix{0\ar[r]&M\ar[r]^{g^{op}}&L\ar[r]^{f^{op}}&K\ar[r]&0} en $\mathscr{A}$, se tiene que 
+\xymatrix{F_{op}^{op}(M)\ar[r]^{[F_{op}^{op}(g)]^{op}}&F_{op}^{op}(L)\ar[r]^{[F_{op}^{op}(f)]^{op}}&F_{op}^{op}(K)\ar[r]&0} es exacta 
+en $\mathscr{B}$.\\
+
+Observando que $F_{op}^{op}(A)=F(A)$ para cada $A\in \mathscr{A}$ y que para cada \\
+
+$\alpha\in Mor( \mathscr{A}^{op})$ 
+ $\displaystyle F_{op}^{op}(\alpha)=D_{\mathscr{B}}\circ F\circ D_{\mathscr{A}^{op}}(\alpha)=[F(\alpha^{op})]^{op}$\\
+
+Entonces se tiene que $F$ es exacta a izquierda si y sólo si para toda sucesión exacta 
+\xymatrix{0\ar[r]&M\ar[r]^{g^{op}}&L\ar[r]^{f^{op}}&K\ar[r]&0} en $\mathscr{A}$ se tiene que 
+\xymatrix{F(M)\ar[r]^{F(g^{op})}&F(L)\ar[r]^{F(f^{op})}&F(K)\ar[r]&0} en $\mathscr{A}$.\\
+
+\boxed{a)\Rightarrow b)} Sea $\alpha:X\to Y$ en $\mathscr{A}$. Luego, se tiene la sucesión exacta 
+\xymatrix{X\ar[r]^{\alpha}&Y\ar[r]^{C_\alpha\quad}&Coker(\alpha)\ar[r]&0} en $\mathscr{A}$. Ahora, como $F$ es exacta a derecha tenemos que 
+\xymatrix{F(X)\ar[r]^{F(\alpha)}&F(Y)\ar[r]^{F(C_\alpha)\quad}&F(Coker(\alpha))\ar[r]&0} es exacta en $\mathscr{B}$, por lo tanto 
+$F(C_\alpha)\simeq CoIm(F_\alpha)\simeq Coker(F_\alpha)$ en $Epi_{\mathscr{B}}(\bullet,F(Y))$.\\
+
+\boxed{b)\Rightarrow c)} Supongamos $F$ preserva cokerneles.\\
+
+Sea \xymatrix{0\ar[r]&K\ar[r]^f&L\ar[r]^g&M\ar[r]&0}  una sucesión exacta en $\mathscr{A}^{op}$. Luego,
+$(\xymatrix{M\ar[r]&0})\simeq Coker(\xymatrix{L\ar[r]^g&M})$ \quad y\\
+$(\xymatrix{L\ar[r]^g&M})\simeq Coker(\xymatrix{K\ar[r]^f&L})\ldots (*)$ 
+por la exactitud en $L$; y como $F$ preserva cokernels, aseguramos que $F(0)=0$. \\
+
+En efecto, como 
+$(\xymatrix{0\ar[r]^{1_0}&0})\simeq Coker(\xymatrix{0\ar[r]^{1_0}&0})$, y $F$ preserva cokernels, se tiene que \\
+$(\xymatrix{F(0)\ar[r]^{1_{F(0)}}&F(0)})\simeq Coker(\xymatrix{F(0)\ar[r]^{1_{F(0)}}&F(0)})\simeq Coker(\xymatrix{F(0)\ar[r]^0&F(0)})$.
+Por lo tanto $1_{F(0)}=0$ y por el ejercicio 51, se tiene que $F(0)=0$.\\
+
+Ahora bien, por $(*)$ y dado que $F$ preserva cokerneles, se tiene que 
+\[(\xymatrix{F(M)\ar[r]&0})\simeq Coker(\xymatrix{F(L)\ar[r]^{F(g)}&F(M)})\] y
+\[(\xymatrix{F(L)\ar[r]^{F(g)}&F(M)})\simeq Coker(\xymatrix{F(K)\ar[r]^{F(f)}&F(L)})\] de donde se sigue que 
+\xymatrix{F(K)\ar[r]^{F(f)}&F(L)\ar[r]^{F(g)}&F(M)\ar[r]&0} es exacta en $\mathscr{B}$.\\
+
+\end{proof}
+
+\item
+\item
+
+\item Para un funtor $F:\mathscr{A}\longrightarrow \mathscr{B}$, entre categorías abelianas, pruebe que las siguientes condiciones son equivalentes:
+
+\begin{itemize}
+\item[a)] $F$ es exacto.
+\item[b)] $\forall \mathscr{D}=\{\xymatrix{A\ar[r]^f&B\ar[r]^g&C}\}$ en $\mathscr{A}$, se tiene que: \\$\mathscr{D}$ es exacto en  $\mathscr{A}$
+$\Rightarrow F(\mathscr{D})$ es exacto en $\mathscr{B}$.
+\end{itemize}
+
+\begin{proof}
+
+
+
+\end{proof}
+
+
+
+
+\item Consideremos el siguiente diagrama conmutativo\\
+
+\centerline{
+\xymatrix{
+A_1\ar[r]^{u_1}\ar[d]^{f_1}&A_2\ar[r]^{u_2}\ar[d]^{f_2}&A_3\ar[r]^{u_3}\ar[d]^{f_3}&A_4\ar[r]^{u_4}\ar[d]^{f_4}&A_5\ar[d]^{f_5}\\
+A_1'\ar[r]^{u_1'}&A_2'\ar[r]^{u_2'}&A_3'\ar[r]^{u_3'}&A_4'\ar[r]^{u_4'}&A'_5
+}}
+
+y con filas exactas en una categoría abeliana $\mathscr{A}$. Pruebe que:
+
+\begin{itemize}
+\item[a)] Si $f_2$ y $f_4$ son monos y $f_1$ es epi, entonces $f_3$ es mono.
+\item[b)] Si $f_2$ y $f_4$ son epis y $f_5$ es mono, entonces $f_3$ es epi.
+\end{itemize}
+
+\begin{proof}
+Por el teorema 1.10.9 existe una subcategoría abeliana $\mathscr{A}'$ de $\mathscr{A}$ tal que $\mathscr{A}'$ es subcategoría plena y pequeña
+de $\mathscr{A}$ y $\mathscr{D}\subseteq \mathscr{A}'$. Por 1.10.10 existe un anillo $R$ y un funtor fiel, pleno y exacto \\$F:\mathscr{A}'
+\longrightarrow Mod(R)$.\\
+
+Considerando el diagrama $F(\mathscr{D})$ en $Mod(R)$
+
+\centerline{
+\xymatrix{
+F(A_1)\ar[r]^{F(u_1)}\ar[d]^{F(f_1)}&F(A_2)\ar[r]^{F(u_2)}\ar[d]^{F(f_2)}&
+F(A_3)\ar[r]^{F(u_3)}\ar[d]^{F(f_3)}&F(A_4)\ar[r]^{F(u_4)}\ar[d]^{F(f_4)}&F(A_5)\ar[d]^{F(f_5)}\\
+F(A_1')\ar[r]^{F(u_1')}&F(A_2')\ar[r]^{F(u_2')}&F(A_3')\ar[r]^{F(u_3')}&F(A_4')\ar[r]^{F(u_4')}&F(A_5')
+}}
+
+por 1.10.7 se tiene que $F(\mathscr{D})$ es conmutativo y con filas exactas en $Mod(R)$.\\
+Veamos que a) y b) se cumplen para el diagrama en $Mod(R)$.\\
+
+\boxed{a)} Si $F(f_2)$ y $F(f_4)$ son monos y $F(f_1)$ es epi afirmamos que \\$Ker(F(f_3))=0$.\\
+
+Sea $x\in Ker(F(f_3))\leq F(A_3)$, en particular $F(f_4)F(u_3)(x)=F(u'_3)F(f_3)(x)$ el cual es $0$, entonces $x\in Ker(F(f_4)F(u_3))=Ker(F(u_3))$ pues 
+$F(f_4)$ es mono, así, como los renglones son exactos, $x\in Ker(F(u_3))=Im(F(u_2))$ y por lo tanto existe $y\in F(A_2)$ tal que $F(u_2)(y)=x$.\\
+
+Ahora, $F(f_3)(x)=0$ entonces $0=F(f_3)F(u_2)(y)=F(u'_2)F(f_2)(y)$ por lo que $y\in Ker(F(u'_2)F(f_2))$ entonces, como $F(f_2)$ es mono,\\
+$F(f_2)(y)\in Ker(F(u_2'))=Im(F(u'_1)).$ Por lo anterior, se tiene entonces que $\exists z'\in F(A'_1)$ tal que $F(u_1')(z')=F(f_2)(y)$, y como 
+$F(f_1)$ es epi, entonces existe $z\in F(A_1)$ tal que $F(f_1)(z)=z'$, es decir, \\$F(u_1')F(f_1)(z)=F(f_2)(y)$ y esto implica que $F(f_2)(y)
+=F(f_2)F(u_1)(z)$ pero $F(f_2)$ es mono en $Mod(R)$, entonces es inyectivo, por lo que \\$y=F(u_1)(z)$ y así $x=F(u_2)F(u_1)(z)=0$.\\
+Por lo tanto $F(f_3)$ es mono.\\
+
+\boxed{b)} Dado un diagrama en $\mathscr{A}$ como se muestra en las hipótesis se tiene que el siguiente diagrama es un diagrama conmutativo
+con renglones exactos en $\mathscr{A}^{op}$
+
+\centerline{
+\xymatrix{
+A_5'\ar[d]^{f^{op}_5}\ar[r]^{u_4'^{op}}&A_4'\ar[d]^{f^{op}_4}\ar[r]^{u_3'^{op}}&
+A_3'\ar[d]^{f^{op}_3}\ar[r]^{u_2'^{op}}&A_2'\ar[d]^{f^{op}_2}\ar[r]^{u_1'^{op}}&A_1'\ar[d]^{f^{op}_1}\\
+A_5\ar[r]^{u_4^{op}}&A_4\ar[r]^{u_3^{op}}&A_3\ar[r]^{u_2^{op}}&A_2\ar[r]^{u_1^{op}}&A_1
+}}
+
+Ahora, si $f_2$ y $f_4$ son epi y $f_5$ es mono, entonces $f_2^{op}$ y $f_4^{op}$ son monos y $f_5^{op}$ es epi, así por el inciso a) se tiene 
+que $f_3^{op}$ es mono lo cual implica que $f_3$ es epi.
+
+\end{proof}
+
+\item
+\item
+
+\item Pruebe que para una sucesión exacta \xymatrix{0\ar[r]&A\ar[r]^{\alpha}&B\ar[r]^{\beta}&C\ar[r]&0} en una categoría abeliana $\mathscr{A}$
+y $\gamma \in \operatorname{Hom}_{\mathscr{A}}(A,A')$, las siguientes condiciones se satisfacen:
+
+\begin{itemize}
+\item[a)] Si $(B',\alpha',\gamma')$ es un push-out de \xymatrix{A'&A\ar[l]_{\gamma}\ar[r]^{\alpha}&B}, entonces existe $\beta':B'\to C$ tal que 
+hace conmutar el siguiente diagrama\\
+\centerline{
+\xymatrix{
+0\ar[r]&A\ar[d]^{\gamma}\ar[r]^{\alpha}&B\ar[d]^{\gamma'}\ar[r]^{\beta}&C\ar@{=}[d]\ar[r]&0\\
+0\ar[r]&A'\ar[r]^{\alpha'}&B'\ar[r]^{\beta'}&C'\ar[r]&0& \ldots (*)
+}}
+en $\mathscr{A}$, cuyas filas son sucesiones exactas.
+\item[b)] Si se tiene un diagrama conmutativo como en (*), con filas exactas, entonces $(B',\alpha',\gamma')$ es un push-out de
+ \xymatrix{A'&A\ar[l]_{\gamma}\ar[r]^{\alpha}&B}.
+\end{itemize}
+
+\begin{proof}
+
+Puesto que $\mathscr{A}$ es abeliana y  \xymatrix{0\ar[r]&A\ar[r]^{\alpha}&B\ar[r]^{\beta}&C\ar[r]&0} es exacta, se tiene entonces que 
+\xymatrix{0\ar[r]&C\ar[r]^{\beta^{op}}&B\ar[r]^{\alpha^{op}}&A\ar[r]&0} es exacta en $\mathscr{A}^{op}$, además por hipótesis 
+$\gamma\in \operatorname{Hom}_\mathscr{A}(A,A')$, entonces \\$\gamma^{op}\in \operatorname{Hom}_{\mathscr{A}^{op}}(A',A)$.\\
+
+Sea $(B',\alpha',\gamma')$ un push-out de \xymatrix{A'&A\ar[l]_{\gamma}\ar[r]^{\alpha}&B}, entonces 
+$(B',(\alpha')^{op},(\gamma')^{op})$ es un pull-back de \xymatrix{A'\ar[r]^{\gamma^{op}}&A&B\ar[l]_{\alpha^{op}}}, así por 1.10.16
+existe \\$(\beta')^{op}:C\to B'$ tal que hace conmutar el siguiente diagrama:\\
+
+\centerline{
+\xymatrix{
+0\ar[r]&C\ar@{=}[d]\ar[r]^{(\beta')^{op}}&B'\ar[r]^{(\alpha')^{op}}\ar[d]^{(\gamma')^{op}}&A'\ar[r]\ar[d]^{\gamma^{op}}&0\\ 
+0\ar[r]&C\ar[r]^{\beta^{op}}&B\ar[r]^{\alpha^{op}}&A\ar[r]&0&\ldots (1)
+}}
+
+en $\mathscr{A}^{op}$ cuyas silas son exactas.\\
+
+Así, $\beta':B'\to C$ es tal que hace conmutar el siguiente diagrama en $\mathscr{A}$, cuyas filas son exactas\\
+
+\centerline{
+\xymatrix{
+0\ar[r]&A\ar[d]^{\gamma}\ar[r]^{\alpha}&B\ar[d]^{\gamma'}\ar[r]^{\beta}&C\ar@{=}[d]\ar[r]&0\\
+0\ar[r]&A'\ar[r]^{\alpha'}&B'\ar[r]^{\beta'}&C'\ar[r]&0\,\,.
+}}
+
+Veamos ahora que se cumple b). Si tenemos un diagrama conmutativo como en (*) con filas exactas en $\mathscr{A}$, entonces tenemos un diagrama
+conmutativo con filas exactas en $\mathscr{A}^{op}$ como se muestra en (1). Así, por 1.10.16 $(B',(\alpha')^{op},(\gamma')^{op})$
+ es un pull-back de \xymatrix{A'\ar[r]^{\gamma^{op}}&A&B\ar[l]_{\alpha^{op}}} por lo que $(B',\alpha',\gamma')$ es un push-out de
+ \xymatrix{A'&A\ar[l]_{\gamma}\ar[r]^{\alpha}&B} en $\mathscr{A}$.
+
+\end{proof}
+
+\item Para una categoría abeliana $\mathscr{A}$, pruebe que las siguientes condiciones son equivalentes.
+
+\begin{itemize}
+\item[a)] El diagrama \xymatrix{ A\ar[r]^{\alpha_2}\ar[d]_{\alpha_1}&A_2\ar[d]^{\beta_2}\\
+A_1\ar[r]_{\beta_1}&Q}
+es un Push-out en $\mathscr{A}$.
+
+\item[b)] La sucesión \begin{equation*}
+\xymatrix@C+2pc{
+ A \ar[r]^{\spmat{\alpha_1\\ -\alpha_2}}  & A_1\coprod A_2\ar[r]^{\spmat{\beta_1&\beta_2}}& Q\ar[r]&0}
+\end{equation*}
+es exacta en  $\mathscr{A}$.
+\end{itemize}
+
+\begin{proof}
+
+El diagrama \xymatrix{ A\ar[r]^{\alpha_2}\ar[d]_{\alpha_1}&A_2\ar[d]^{\beta_2}\\
+A_1\ar[r]_{\beta_1}&Q}
+es un Push-out en $\mathscr{A}$ si y sólo si el diagrama\\
+ \xymatrix{ Q\ar[r]^{(\beta_2)^{op}}\ar[d]_{(\beta_1)^{op}}&A_2\ar[d]^{(\alpha_2)^{op}}\\
+A_1\ar[r]_{(\alpha_1)^{op}}&A}
+es un Pull-back en $\mathscr{A}^{op}$ lo cual, por la proposición 1.10.17, es equivalente a que la sucesión 
+
+\begin{equation*}
+\xymatrix@C+4pc{
+ 0\ar[r]&Q \ar[r]^{\spmat{\beta_1^{op}\\ \beta_2^{op}}}  & A_1\coprod A_2\ar[r]^{\spmat{\alpha_1^{op}& (-\alpha_2)^{op}}}& A}
+\end{equation*}
+
+es exacta en $\mathscr{A}^{op}$. Pero esto pasa si y sólo si
+
+ \begin{equation*}
+\xymatrix@C+4pc{
+A \ar[r]^{\spmat{\alpha_1^{op}& (-\alpha_2)^{op}}^{op}} & A_1\prod A_2\ar[r]^{\spmat{\beta_1^{op}\\ \beta_2^{op}}^{op}}
+&Q\ar[r]&0}
+\end{equation*}
+
+es exacta en $\mathscr{A}$ si y sólo si 
+\begin{equation*}
+\xymatrix@C+2pc{
+ A \ar[r]^{\spmat{\alpha_1\\ -\alpha_2}}  & A_1\coprod A_2\ar[r]^{\spmat{\beta_1&\beta_2}}& Q\ar[r]&0}
+\end{equation*}
+es exacta en  $\mathscr{A}$.
+
+\end{proof}
+\item
+\item\,\\
+
+
+\textbf{Ej 68*.} Sean $\mathscr{A}$ una categoría abeliana y $M\in \mathscr{A}$. Pruebe que 
+
+\begin{itemize}
+\item[a)] $M\in Proj(\mathscr{A})\iff \operatorname{Hom}_\mathscr{A}(M,\bullet):\mathscr{A}\to Ab$ es exacto.
+\item[a)] $M\in Inj(\mathscr{A})\iff \operatorname{Hom}_\mathscr{A}(\bullet,M):\mathscr{A}\to Ab$ es exacto.
+\end{itemize}
+\begin{proof}
+Observemos que $\operatorname{Hom}_\mathscr{A}(M,\bullet)$ y $\operatorname{Hom}_\mathscr{A}(\bullet,M)$ son aditivos y exactos a izquierda
+por el ejercicio 55.\\
+
+\boxed{a), \Rightarrow)} Supongamos $M\in Proj(\mathscr{A})$ y sea \xymatrix{0\ar[r]&A\ar[r]^{f}&B\ar[r]^{g}&C\ar[r]^{}&0} \\una sucesión
+exacta en $\mathscr{A}$. Como $\operatorname{Hom}_\mathscr{A}(M,\bullet)$ es exacta a izquierda, se tiene que \\
+\centerline{
+\xymatrix@C+1pc{
+0\ar[r]&\operatorname{Hom}_\mathscr{A}(M,A)\ar[r]^{\operatorname{Hom}_\mathscr{A}(M,f)}&\operatorname{Hom}_\mathscr{A}(M,B) 
+\ar[r]^{\operatorname{Hom}_\mathscr{A}(M,g)}&\operatorname{Hom}_\mathscr{A}(M,C)
+}}
+es exacta en $Ab$.\\
+
+ Basta mostrar que $\operatorname{Hom}_\mathscr{A}(M,g)$ es epi en $Ab$. Mostraremos que, de hecho, 
+$\operatorname{Hom}_\mathscr{A}(M,g)$ es suprayectiva.\\
+
+Sea $\alpha\in\operatorname{Hom}_\mathscr{A}(M,C)$, como \xymatrix{0\ar[r]&A\ar[r]^{f}&B\ar[r]^{g}&C\ar[r]^{}&0} es exacta, se tiene que $g$ es 
+epi y $g\in \operatorname{Hom}_\mathscr{A}(B,C)$ así, como $M$ es proyectivo, existe un $\eta\in \operatorname{Hom}_\mathscr{A}(M,B)$ tal
+que $g\eta=\alpha$, por lo tanto $\operatorname{Hom}_\mathscr{A}(M,g)$ es suprayectivo y en particular es epi, por lo tanto la sucesión \\
+
+\xymatrix@C+1pc{
+0\ar[r]&\operatorname{Hom}_\mathscr{A}(M,A)\ar[r]^{\operatorname{Hom}_\mathscr{A}(M,f)}&\operatorname{Hom}_\mathscr{A}(M,B) 
+\ar[r]^{\operatorname{Hom}_\mathscr{A}(M,g)}&\operatorname{Hom}_\mathscr{A}(M,C)\ar[r]&0
+}
+es exacta en $Ab$.\\
+
+\boxed{a), \Leftarrow)} Supongamos ahora que $\operatorname{Hom}_\mathscr{A}(M,\bullet)$ es exacto. Sea $h\in
+\operatorname{Hom}_\mathscr{A}(M,C)$ y $\gamma\in \operatorname{Hom}_\mathscr{A}(X,C)$ en epi, entonces tenemos el siguiente 
+diagrama con renglón exacto\\
+\centerline{
+\xymatrix{
+&M\ar[d]^{\eta}&\\
+X\ar@{->>}[r]_{\gamma}&C\ar[r]&0\,.
+}}
+Como $\operatorname{Hom}_\mathscr{A}(M,\bullet)$ es exacto, entonces \\
+\centerline{
+\xymatrix@C+1pc{\operatorname{Hom}_\mathscr{A}(M,X)\ar[r]_{\operatorname{Hom}_\mathscr{A}(M,g)}&
+\operatorname{Hom}_\mathscr{A}(M,C)\ar[r]&0
+}}
+es exacto en $Ab$, por lo tanto $\operatorname{Hom}_\mathscr{A}(M,g)$ es epi y en consecuencia suprayectivo. Así como $\eta\in 
+\operatorname{Hom}_\mathscr{A}(M,C)$, existe $f\in \operatorname{Hom}_\mathscr{A}(M,X)$ tal que 
+$\operatorname{Hom}_\mathscr{A}(M,\gamma)(f)=\eta$ es decir, $\gamma f=\eta$, por lo tanto $M$ es proyectivo.\\
+
+\boxed{b), \Rightarrow)} Supongamos $M$ es inyectivo en $\mathscr{A}$. Sea \\
+\xymatrix{0\ar[r]&A\ar[r]^{f}&B\ar[r]^{g}&C\ar[r]^{}&0} una sucesión exacta en $\mathscr{A}$. Como \\$\operatorname{Hom}_\mathscr{A}(\bullet,M)$
+es un funtor exacto izquierdo contravariante, por el ejercicio 55, entonces \\
+
+\centerline{
+\xymatrix@C+1pc{
+0\ar[r]&\operatorname{Hom}_\mathscr{A}(C,M)\ar[r]^{\operatorname{Hom}_\mathscr{A}(g,M)}&
+\operatorname{Hom}_\mathscr{A}(B,M)\ar[r]^{\operatorname{Hom}_\mathscr{A}(f,M)}&
+\operatorname{Hom}_\mathscr{A}(A,M)
+}}
+
+es exacta. Basta probar entonces que $\operatorname{Hom}_\mathscr{A}(f,M)$ es suprayectivo.\\
+
+Sea $\eta\in \operatorname{Hom}_\mathscr{A}(A,M)$, como \xymatrix{0\ar[r]&A\ar[r]^{f}&B\ar[r]^{g}&C\ar[r]^{}&0} una sucesión exacta en 
+$\mathscr{A}$, en particular $f$ es mono así, como $M$ es inyectivo, se tiene entonces que $\exists \gamma \in  \operatorname{Hom}_\mathscr{A}(B,M)$
+tal que $\eta=\gamma f$ por lo tanto $ \operatorname{Hom}_\mathscr{A}(f,M)$ es suprayectivo, en particular es epi. Así\\
+\centerline{
+\xymatrix@C+1pc{
+0\ar[r]&\operatorname{Hom}_\mathscr{A}(C,M)\ar[r]^{\operatorname{Hom}_\mathscr{A}(g,M)}&
+\operatorname{Hom}_\mathscr{A}(B,M)\ar[r]^{\operatorname{Hom}_\mathscr{A}(f,M)}&
+\operatorname{Hom}_\mathscr{A}(A,M)
+}}
+
+es exacta en $Ab$ lo que implica que $\operatorname{Hom}_\mathscr{A}(\bullet,M)$ es exacto.\\
+
+\boxed{b), \Leftarrow)}  Supongamos  $\operatorname{Hom}_\mathscr{A}(\bullet,M)$ es exacto. Si 
+$\eta\in \operatorname{Hom}_\mathscr{A}(A,M)$ y $\alpha\in \operatorname{Hom}_\mathscr{A}(A,X)$ es mono, entonces  se tiene el 
+siguiente diagrama con renglón exacto\\
+
+\centerline{
+\xymatrix{
+0\ar[r]&A\ar[d]_{\eta}\ar[r]^{\alpha}&X\\
+&M
+}}
+
+como $ \operatorname{Hom}_\mathscr{A}(\bullet,M)$ es exacto, entonces \\
+
+\centerline{
+\xymatrix@+1pc{
+ \operatorname{Hom}_\mathscr{A}(X,M)\ar[r]^{ \operatorname{Hom}_\mathscr{A}(\alpha,M)}&
+ \operatorname{Hom}_\mathscr{A}(A,M)\ar[r]&0
+}}
+es exacto, entonces $ \operatorname{Hom}_\mathscr{A}(\alpha,M)$ es epi en $Ab$ por lo tanto es suprayectivo.\\
+
+Así, como $\eta\in  \operatorname{Hom}_\mathscr{A}(A,M)$, \quad $\exists \gamma\in  \operatorname{Hom}_\mathscr{A}(X,M)$ tal que\\
+$\eta= \operatorname{Hom}_\mathscr{A}(\alpha,M)(\gamma)=\gamma\circ \alpha$. Por lo tanto $M$ es proyectivo.
+
+\end{proof}
+
+\item Sea $\mathscr{A}$ una categoría abeliana y $\catarrow{\beta}{I}{M}{e}$ un split-epi en $\mathscr{A}$, con \\
+$I\in Inj(\mathscr{A})$. Pruebe que $M\in Inj(\mathscr{A})$.
+
+\begin{proof}
+Sea $\alpha:M\to I$ tal que $\beta\alpha=1_M$, este morfismo existe por ser $\beta$ split-epi, y consideremos un diagrama en $\mathscr{A}$ de la
+forma\\
+
+\centerline{
+\xymatrix{
+A\ar[d]_{g}\ar@{^(->}[r]^{f}&B\\ M\,.
+}}
+Como $\alpha\in  \operatorname{Hom}_\mathscr{A}(M,I)$, entonces $\alpha g:A\to I$. Como $I$ es inyectivo en $\mathscr{A}$ existe 
+$\eta:B\to I$ tal que $\alpha g=\eta f$, entonces $\beta\eta f=\beta\alpha g=1_M g=g.$ Por lo tanto $M$ es inyectivo en $A$.
+
+\end{proof}
+
+\item Para una categoría abeliana $A$ e $I\in A$, pruebe las siguientes condiciones equivalentes
+
+\begin{itemize}
+\item[a)] $I\in Inj(\mathscr{A})$.
+\item[b)] Todo mono $\alpha:I\to X$ en $\mathscr{A}$ es split-mono.
+\end{itemize}
+
+\begin{proof}
+\boxed{a)\Rightarrow b)} Supongamos $I$ es inyectivo en $\mathscr{A}$ y $\alpha:I\to X$ es mono, entonces se tiene el siguiente diagrama\\
+
+\centerline{
+\xymatrix{
+I\ar[d]_{Id_I}\ar@{^(->}[r]^{\alpha}&X\\ I& .
+}}
+
+Como $I$ es inyectivo $\exists \beta:X\to I$ tal que $\beta\alpha=Id_I$, es decir, $\alpha$ es split-mono.\\
+
+\boxed{b)\Rightarrow a)} Supongamos que todo mono $\alpha:I\to X$ en $\mathscr{A}$ es split-mono.\\
+
+Consideremos el diagrama en $\mathscr{A}$\\
+
+\centerline{
+\xymatrix{
+A\ar[d]_{\eta}\ar@{^(->}[r]^{f}&B\\ I& .
+}}
+
+Como  $\mathscr{A}$ es abeliana, existe el Push-out de $f$ y $\eta$\\
+
+
+\centerline{
+\xymatrix{
+A\ar[d]_{\eta}\ar@{^(->}[r]^{f}&B\ar[d]^{\alpha_1}\\ I\ar[r]_{\alpha_2}&P& .
+}}
+
+Por el ejercicio 64 a) se tiene que, como $f$ es mono, $\alpha_2$ es mono, y por el ejercicio 64 b), que $\eta$ se factoriza a travéz de $f$ si y sólo si
+$\alpha_2$ es split-mono. Pero por hipótesis $\alpha_2$ al ser mono, tiene que ser split-mono, por lo tanto $\eta$ se factoriza a travéz de $f$ 
+e implica que $I$ es inyectivo.
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+\end{document}
