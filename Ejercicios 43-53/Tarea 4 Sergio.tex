@@ -1,0 +1,267 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage[spanish,es-lcroman]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{amsmath,stackengine,scalerel,mathtools}
+\usepackage{xparse, tikz-cd, pgfplots}
+\usepackage{xstring}
+\usepackage{mathrsfs}
+\usepackage{comment}
+\usepackage{faktor}
+\usepackage[all]{xy}
+\input{C:/Users/Darkandlive/Desktop/Latex/Álgebra/Tercer semestre/Comandos Matemagicos}
+\title{Ejercicios 43-53}
+\author{Luis Gerardo Arruti Sebastian\\ Sergio Rosado Zúñiga}
+\date{}
+\begin{document}
+	\maketitle
+	\begin{enumerate}[label=\textbf{Ej \arabic*.}]
+		\setcounter{enumi}{42}
+
+
+\item 
+\item 
+
+\item Sean $\{R_i\}_{i=1}^n$ una familia de anillos (asociativos con $1$). Considere el conjunto $R:=\displaystyle\bigtimes_{i=1}^nR_i$, con las
+operaciones suma y producto dadas  coordenada a coordenada, i.e., para $\displaystyle x=(x_i)^n_{i=1}$ y $\displaystyle y=(y_i)_{i=1}^n$ en $R$,
+ definimos $\displaystyle x+y:=(x_i+y_i)_{i=1}^n$ y $\displaystyle xy=(x_iy_i)_{i=1}^n$.\\
+
+Pruebe que 
+\begin{enumerate}
+\item[a)] Con las operaciones anteriores $R$ es un anillo con $1_R=(1_{R_i})_{i=1}^n.$
+\item[b)] Para cada $j\in [1,n]$, la $j$-ésima pritección $proy_j:R\to R_j,$\\ $x=(x_i)_{i=1}^n\mapsto x_j$, es un morfismo en $Rings$ y 
+suryectivo en $Sets$.
+\item[c)] $R$ y $\{proy_j:R\to R_i\}_{i=1}^n$ son un producto en $Rings$ para $\{R_i\}_{i=1}^n$.
+\end{enumerate}
+\begin{proof}
+\boxed{a)} Sean $x,y\in R$, con $x=(x_i)_{i=1}^n,\,\,y=(y_i)_{i=1}^n,$\\ 
+$z=(z_i)_{i=1}^n\,\,$y \,\,$0_R=(0_i)_{i=1}^n$ donde $0_i$ es el neutro aditivo de $R_i$ para cada $i\in I=\{1,2,\ldots,n\}$.\\
+
+Grupo con respecto a la suma
+\begin{itemize}
+\item[i)] Como $x_i,y_i\in R_i\,\,\,\forall i\in I$ entonces $x_i+y_i\in R_i\,\,\forall i\in I$, así \\$x+y:=(x_i+y_i)_{i=1}^n\in R$. Mas aún, 
+$(x_i+y_i)_{i=1}^n=(y_i+x_i)_{i=1}^n$, por lo que $x+y=y+x$.
+\item[ii)] Como $R$ es anillo para toda $i\in I$, entonces 
+\[(x+y)+z=[(x_i+y_i)+z_i]_{i=1}^n=[x_i+(y_i+z_i)]_{i=1}^n=x+(y+z).\]
+\item[iii)] $0_R+x=(0_i+x_i)_{i=1}^n=(x_i)_{i=1}^n=x$.
+\item[iv)] Definimos para cada $x\in R$\quad $-x:=(-x_i)_{i=1}^n$, entonces \\$x+(-x)=(x_i+(-x_i))_{i=1}^n=(0_i)_{i=1}^n=0_R.$
+\end{itemize}
+Por lo tanto $R$ es un grupo abeliano con la suma.\\
+
+Monoide con respecto a la multiplicación:\\
+
+Como $R_i$ es un anillo para cada $i\in I$ se tiene que
+\begin{itemize}
+\item[i)] $xy=(x_iy_i)_{i=1}^n\in R$ pues $x_iy_i\in R_i\quad \forall i\in I$.
+\item[ii)] $(xy)z=[(x_iy_i)z_i]_{i=1}^n=[x_i(y_iz_i)]_{i=1}^n=x(yz)$.
+\item[iii)] $x1_R=(x_i1_{R_i})_{i=1}^n=(x_i)_{i=1}^n=x=(x_i)_{i=1}^n=(1_{R_i}x_i)_{i=1}^n=1_Rx$.
+\item[iv)] $(x+y)z=[(x_i+y_i)z_i]^n_{i=1}=[x_iz_i+y_iz_i]^n_{i=1}=xz+yz.$
+\end{itemize}
+Por lo tanto $R$ es un anillo con $1_R=(1_{R_i})_{i=1}^n$.\\
+
+\boxed{b)} Sea $j\in \{1,2\ldots,n\}$, tomamos $proy_j:R\to R_j$ tal que \\
+$z=(z_i)_{i=1}^n\mapsto z_j$\quad y sean $x,y$ descritos como en el inciso a).\\
+
+Entonces $proy_j(x+y)=proy_j[(x_i+y_i)_{i=1}^n] =x_j+y_j=proy_j(x)+proy_j(y)$ y 
+$proy_j(xy)=proy_j[(x_iy_i)_{i=1}^n] =x_jy_j=proy_j(x)proy_j(y)$.\\
+
+Además, si $a\in R_j$ para alguna $j\in \{1,2,\ldots,n\}$, 
+se tiene el elemento $\hat{a}\in R$ tal que $\hat{a}=(a_i)_{i=1}^n$ donde $a_i=0\quad \forall i\neq j$ \, y \, $a_j=a$.
+Así $proy_j(\hat{a})=a$ y en consecuencia $proy_j$ es un morfismo de anillos suprayectivo.\\
+
+\boxed{c)} Sea $P$ un anillo y $\{p_i:P\to R_i\}_{i=1}^n$ una familia de morfismos de anillos. Sea $\varphi:P\to R$ tal que $\varphi(x)=x_p$ donde 
+$x$ es el elemento de $R$ tal que $x_p=(x_i)^n_{i=1}$ con $x_i=p_i(x)$ para cada $i\in \{1,2,\ldots,n\}$. Veamos que es morfismo de anillos.\\
+
+Como $p_i$ es morfismo de anillos y $p_i(x)\in R_i\quad \forall i\in \{1,2,\ldots,n\}$ y para cada $x\in P$, 
+entonces si $(a_i)_{i=1}^n=\varphi(x)$ se tiene que 
+$a_i=p_i(x)$ para cada $i\in \{1,2,\ldots,n\}$ por lo tanto $\varphi$ está bien definida.\\
+
+Sean $x,y\in P$, entonces 
+\begin{gather*}
+\varphi(x+y)=(x+y)_p=(p_i(x+y))_{i=1}^n=(p_i(x)+p_i(y))_{i=1}^n\\
+=(p_i(x))_{i=1}^n+(p_i(y))_{i=1}^n=x_p+y_p=\varphi(x)+\varphi(y)
+\end{gather*}
+y
+\begin{gather*}
+\varphi(xy)=(xy)_p=(p_i(xy))_{i=1}^n=(p_i(x)p_i(y))_{i=1}^n\\
+=(p_i(x))_{i=1}^n(p_i(y))_{i=1}^n=x_py_p=\varphi(x)\varphi(y).
+\end{gather*}
+
+Por lo tanto $\varphi$ es un morfismo de anillos.
+Notemos que, para toda $x\in P$, $proy_j\circ \varphi(x)=proy_j(x_p)=p_j(x)$ para cada $j\in \{1,2,\ldots,n\}$, por lo tanto $p_j=proy_j\circ \varphi$.\\
+
+Por último si existiera $\eta:P\to R$ tal que $p_j=proy_j\eta$ para cada \\$j\in \{1,2,\ldots,n\}$, entonces para cada $x\in P$ se tiene que 
+ $\eta(x)\in R$, es decir, $\eta(x)=(x_i)_{i=1}^n$ con $x_i\in R_i\quad \forall i\in \{1,2,\ldots,n\}$.
+Ahora, como\\ $proy_j\eta(x)=p_j(x)$, entonces $x_j=p_j(x)\quad \forall j\in \{1,2,\ldots,n\}$, es decir, $\eta(x)=(p_i(x))_{i=1}^n=x_p=\varphi(x).$\\
+
+Por lo tanto $\varphi$ es único y así $R$ y $\{proy_j:R\to R_i\}_{i=1}^n$ son un producto en $Rings$ para $\{R_i\}_{i=1}^n$.
+
+\end{proof}
+
+
+\item Para una categoría $\mathscr{C}$, pruebe que las siguientes condiciones son equivalentes
+
+\begin{itemize}
+\item[a)] $\mathscr{C}$ tiene objeto cero y biproductos $A\coprod A$ en  $\mathscr{C}$, $\forall A\in \mathscr{C}$.
+\item[b)] $\mathscr{C}^{op}$ tiene objeto cero y biproductos $A\coprod A$ en  $\mathscr{C}^{op}$, $\forall A\in \mathscr{C}$.
+\end{itemize}
+
+\begin{proof}
+Notemos que $\mathscr{C}$ tiene objeto cero si y sólo si $\mathscr{C}^{op}$ tiene objeto cero, pues si $\mathscr{C}$ tiene objeto cero $0$, entonces\\
+$|\operatorname{Hom}_{\mathscr{C}}(X,0)|=1=|\operatorname{Hom}_{\mathscr{C}}(0,X)|,\quad \forall X\in \mathscr{C}$, pero esto pasa si \\
+y sólo si $|\operatorname{Hom}_{\mathscr{C}}(0,X)|=1=|\operatorname{Hom}_{\mathscr{C}}(X,0)|,\quad \forall X\in \mathscr{C}^{op}$.\\
+
+\boxed{a)\Rightarrow b)} Como $\mathscr{C}$ y $\mathscr{C}^{op}$ tienen objeto cero, si $A\coprod A$ es biproducto en $\mathscr{C}$, entonces 
+existe $A\prod A$ en $\mathscr{C}$ y $\delta:A\coprod A\longrightarrow A\prod A$ un isomorfismo. Sean $\{\mu_1,\mu,2:A\longrightarrow A\coprod A\}$
+\quad y \quad $\{\pi_1,\pi_2:A\prod A \longrightarrow A\}$ los morfismos canonicos del coproducto y producto respectivamente, entonces por el 
+ejercicio 40 $A\coprod A$ con $\{\mu_1^{op},\mu_2^{op}:A\coprod A\longrightarrow A\}$ y $A\prod A$ con 
+$\{\pi_1^{op},\pi_2^{op}:A\longrightarrow A\prod A \}$ son un producto y un coproducto en $\mathscr{C}^{op}$ respectivamente tales que 
+$\delta^{op}:A\prod A\longrightarrow A\coprod A$ es un isomorfismo al ser $\delta$ iso. Por lo tanto $A\coprod A$ es un biproducto en 
+$\mathscr{C}^{op}$.\\
+
+\boxed{b)\Rightarrow a)} Es análogo a lo anterior pues $(\mathscr{C}^{op})^{op}=\mathscr{C}$.
+
+\end{proof}
+
+\item
+\item
+
+\item Pruebe que, para un anillo $R$
+\begin{itemize}
+\item[a)] $Mod(R)$ es abeliana.
+\item[b)] $mod(R)$ es abeliana si $R$ es un anillo artiniano izquierdo, donde $mod(R)$ es la subcategoría de $Mod(R)$, cuyos objetos son los $R$-módulos
+finitamente generados.
+\end{itemize}
+\begin{proof}
+\boxed{a)} Por los ejercicios 29 y 30, $Mod(R)$ tiene kerneles y cokerneles, por el ejercicio 32 es normal y conormal y por el ejercicio 41 
+tiene productos y coproductos (en particular tiene productos y coproductos finitos) entonces por el teorema 1.10.1 c) se tiene que $Mod(R)$ es abeliana.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{proof}
+
+
+\item Sean $\mathscr{A}$ y $\mathscr{B}$ categorías aditivas y $F:\mathscr{A}\to \mathscr{B}$ un funtor de cualquier varianza. Pruebe que los 
+siguientes son equivalentes:
+\begin{itemize}
+\item[a)] $F$ es aditivo.
+\item[b)] $F_{op}:=F\circ D_{\mathscr{A}^{op}}: \mathscr{A}^{op}\longrightarrow \mathscr{B}$ es aditivo.
+\item[c)] $F^{op}:=D_{\mathscr{B}}\circ F: \mathscr{A}\longrightarrow \mathscr{B}^{op}$ es aditivo.
+\item[d)] $F_{op}^{op}:=D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}: \mathscr{A}^{op}\longrightarrow  \mathscr{B}^{op}$ es aditivo.
+\end{itemize}
+(Se cambió ligeramente el enunciado para fines practicos de la demostración.)
+
+\begin{proof} Recordemos que $\mathscr{A}^{op}$ y $\mathscr{B}^{op}$ son categorías abelianas por 1.9.15, también que
+ $D_{\mathscr{A}^{op}}:\mathscr{A}^{op}\longrightarrow \mathscr{A}$ es un funtor contravariante tal que 
+$(\begin{tikzcd} A\arrow{r}{f}&B\end{tikzcd})\mapsto(\begin{tikzcd} B\arrow{r}{f^{op}}&A\end{tikzcd})$ y, como $\operatorname{Hom}_\mathscr{A}
+(X,Y)$ \\es un grupo abeliano, $\displaystyle\operatorname{Hom}_{\mathscr{A}^{op}}(Y,X)$ es también un grupo abeliano.\\
+
+Se probará el caso en que $F$ es covariante
+
+\boxed{a)\Rightarrow b)} Supongamos $F$ es aditivo. Entonces \\$F:\operatorname{Hom}_\mathscr{A}(X,Y)\longrightarrow
+\operatorname{Hom}_\mathscr{B}(F(X),F(Y))$ es un morfismo en $Ab$ para toda $X,Y\in \mathscr{A}$. Así para cualesquiera
+ $f^{op}:\operatorname{Hom}_{\mathscr{A}^{op}}(B,A)$\quad y\\
+$g^{op}:\operatorname{Hom}_{\mathscr{A}^{op}}(C,B)$, entonces
+\begin{gather*}
+F_{op}(f^{op}\circ g^{op})=F\circ D_{\mathscr{A}^{op}}(f^{op}\circ g^{op})=F\circ D_{\mathscr{A}^{op}}((g\circ f)^{op})=F(g\circ f)\\
+=F(g)\circ F(f)=F\circ D_{\mathscr{A}^{op}}(g^{op})\circ F\circ D_{\mathscr{A}^{op}}(f^{op})=F_{op}(g^{op})\circ F_{op}(f^{op}).
+\end{gather*}
+Es decir,  $F_{op}$ es un funtor aditivo (pues es contravariante).
+
+\boxed{b)\Rightarrow c)} Supongamos $F_{op}$ es aditivo.Entonces \\$F_{op}:\operatorname{Hom}_{\mathscr{A}^{op}}(Y,X)\longrightarrow
+\operatorname{Hom}_\mathscr{B}(F(X),F(Y))$ es un morfismo en $Ab$ para toda $X,Y\in \mathscr{A^{op}}$. Así para cualesquiera
+ $f:\operatorname{Hom}_{\mathscr{A}}(B,C)$\quad y\\
+$g:\operatorname{Hom}_{\mathscr{A}}(A,B)$, entonces
+\begin{gather*}
+F^{op}(f\circ g)=D_{\mathscr{B}}\circ F(f\circ g)=D_{\mathscr{B}}(F(f\circ g))=(F(f\circ g))^{op}=[F((g^{op}\circ f^{op})^{op})]^{op}\\
+=[F\circ D_{\mathscr{A}^{op}}(g^{op}\circ f^{op})]^{op}=[F\circ D_{\mathscr{A}^{op}}(f^{op})\circ F\circ D_{\mathscr{A}^{op}}(g^{op})]^{op}\\
+=[F(f)\circ F(g)]^{op}=(F(g))^{op}\circ (F(f))^{op}=D_{\mathscr{B}}\circ F(g)\circ D_{\mathscr{B}}\circ F(f)=F^{op}(g)\circ F^{op}(f).
+\end{gather*}
+Es decir,  $F^{op}$ es un funtor aditivo (pues es contravariante).
+
+\boxed{c)\Rightarrow d)} Supongamos $F^{op}$ es aditivo.Entonces \\$F^{op}:\operatorname{Hom}_{\mathscr{A}}(X,Y)\longrightarrow
+\operatorname{Hom}_{\mathscr{B}^{op}}(F(Y),F(X))$ es un morfismo en $Ab$ para toda $X,Y\in \mathscr{A}$. Así para cualesquiera
+$g:\operatorname{Hom}_{\mathscr{A}}(A,B)$\quad y\\
+$f:\operatorname{Hom}_{\mathscr{A}}(B,C)$, entonces
+
+\begin{gather*}
+F_{op}^{op}(f^{op}\circ g^{op})=D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}(f^{op}\circ g^{op})
+=D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}((g\circ f)^{op})\\
+=D_{\mathscr{B}}\circ F (g\circ f)=D_{\mathscr{B}}\circ F(f)\circ D_{\mathscr{B}}\circ F(g)\\
+=D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}(f^{op})\circ D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}(g^{op})\\
+=F_{op}^{op}(f^{op})\circ F_{op}^{op}(g^{op}).
+\end{gather*}
+Es decir, $F_{op}^{op}$ es un funtor aditivo covariante.
+
+\boxed{d)\Rightarrow a)} Supongamos $F_{op}^{op}$ es aditivo.Entonces \\$F_{op}^{op}:\operatorname{Hom}_{\mathscr{A}^{op}}(X,Y)\longrightarrow
+\operatorname{Hom}_{\mathscr{B}^{op}}(F(X),F(Y))$ es un morfismo en $Ab$ para toda $X,Y\in \mathscr{A}$. Así para cualesquiera
+$g:\operatorname{Hom}_{\mathscr{A}}(A,B)$\quad y\\
+$f:\operatorname{Hom}_{\mathscr{A}}(B,C)$, entonces
+
+\begin{gather*}
+F(f\circ g)=F\circ D_{\mathscr{A}^{op}}(g^{op}\circ f^{op})=[D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}(g^{op}\circ f^{op})]^{op}\\
+=[D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}(g^{op})\circ D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}(f^{op})]^{op}
+=[D_{\mathscr{B}}\circ F(g)\circ D_{\mathscr{B}}\circ F(f)]^{op}\\
+=(D_{\mathscr{B}}\circ F(f))^{op}\circ (D_{\mathscr{B}}\circ F(g))^{op}= F(f)\circ F(g).
+\end{gather*}
+Es decir, $F_{op}^{op}$ es un funtor aditivo covariante.\\
+
+El caso en que $F$ es contravariante es análogo a esta demostración.
+\end{proof}
+
+\item
+\item
+
+\item Sea $G:\mathscr{A}\longrightarrow \mathscr{B}$ un funtor contravariante entre categorías aditivas. Pruebe que $G$ s aditivo si y sólo si
+manda productos finitos en $\mathscr{A}$ a coproductos finitos en $\mathscr{B}$.
+
+\begin{proof}
+Decimos que un funtor contravariante $G:\mathscr{A}\longrightarrow \mathscr{B}$ entre categorías aditivas manda productos finitos en $\mathscr{A}$ 
+a coproductos finitos en $\mathscr{B}$ si el funtor $G_{op}:=G\circ D_{\mathscr{A}^{op}}$ preserva coproductos finitos en $\mathscr{A}^{op}$.\\
+
+Supongamos $G$ es aditivo, entonces $G_{op}:=G\circ D_{\mathscr{A}^{op}}$ es aditivo por el ejercicio 50. Así, por 1.10.2 $G_{op}$ preserva
+coproductos finitos en $\mathscr{B}$.\\
+
+Ahora, si suponemos que $G$ manda productos finitos de $\mathscr{A}$ en coproductos finitos de $\mathscr{B}$ se tiene por definición que
+$G\circ D_{\mathscr{A}^{op}}$ preserva coproductos finitos en ${\mathscr{A}^{op}}$, entonces por 1.10.2 $G_{op}$ es aditivo, así
+$G$ es aditivo.
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+\end{document}
