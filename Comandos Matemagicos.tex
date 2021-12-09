@@ -82,7 +82,7 @@
 \newcommand{\cend}[2]{
 	End_{#1}\lrprth{#2}
 }
-\newcommand{\catmatrix}[4]{Mat_{#1\times #2}\lrprth{#3,#4}hom}
+\newcommand{\catmatrix}[4]{Mat_{#1\times #2}\lrprth{#3,#4}}
 \newcommand{\genmod}[2]{
 	\left< #1\right>_{#2}
 }
@@ -436,6 +436,57 @@
 		\& \l_nicolas_commutativehouse_A_tl  \arrow{dr}{\l_nicolas_commutativehouse_g_tl} \& \\
 		\l_nicolas_commutativehouse_B_tl \arrow{ur}{\l_nicolas_commutativehouse_f_tl}\arrow{rr}{\l_nicolas_commutativehouse_h_tl}\arrow{d}[swap]{\l_nicolas_commutativehouse_k_tl} \& \&  \l_nicolas_commutativehouse_C_tl\arrow{d}{\l_nicolas_commutativehouse_l_tl} \\
 		\l_nicolas_commutativehouse_D_tl\arrow[swap]{rr}{\l_nicolas_commutativehouse_m_tl}\& \& \l_nicolas_commutativehouse_E_tl
+	\end{tikzcd}
+}
+
+\ExplSyntaxOff
+
+\ExplSyntaxOn
+
+\NewDocumentCommand{\snakelem}{O{}m}
+{
+	\group_begin:
+	\keys_set:nn {nicolas/snakelem}{#2}
+	\nicolas_snakelem:n {#1}
+	\group_end:
+}
+
+\keys_define:nn {nicolas/snakelem}
+{	
+	A     .tl_set:N = \l_nicolas_snakelem_A_tl,
+	B   .tl_set:N = \l_nicolas_snakelem_B_tl,
+	C .tl_set:N = \l_nicolas_snakelem_C_tl,
+	Ap .tl_set:N = \l_nicolas_snakelem_Ap_tl,
+	Bp .tl_set:N = \l_nicolas_snakelem_Bp_tl,
+	Cp      .tl_set:N = \l_nicolas_snakelem_Cp_tl,
+	AtoB	.tl_set:N = \l_nicolas_snakelem_AtoB_tl,
+	BtoC   .tl_set:N = \l_nicolas_snakelem_BtoC_tl,
+	AptoBp   .tl_set:N = \l_nicolas_snakelem_AptoBp_tl,
+	BptoCp .tl_set:N = \l_nicolas_snakelem_BptoCp_tl,
+	AtoAp .tl_set:N = \l_nicolas_snakelem_AtoAp_tl,
+	BtoBp .tl_set:N = \l_nicolas_snakelem_BtoBp_tl,
+	CtoCp .tl_set:N = \l_nicolas_snakelem_CtoCp_tl,	
+	
+	A		.initial:n =A,
+	B		.initial:n =B,
+	C		.initial:n =C,
+	Ap			.initial:n =A',
+	Bp		.initial:n =B',
+	Cp    .initial:n =C',
+	AtoB    .initial:n =,
+	BtoC    .initial:n =,
+	AptoBp    .initial:n =,
+	BptoCp    .initial:n =,
+	AtoAp    .initial:n =,	
+	BtoBp .initial:n=,
+	CtoCp .initial:n=,
+}
+
+\cs_new:Nn \nicolas_snakelem:n
+{
+	\begin{tikzcd}[ampersand~replacement=\&,#1]
+		 \&\l_nicolas_snakelem_A_tl\arrow{r}{\l_nicolas_snakelem_AtoB_tl}\arrow{d}[swap]{\l_nicolas_snakelem_AtoAp_tl}\& \l_nicolas_snakelem_B_tl\arrow{r}{\l_nicolas_snakelem_BtoC_tl}\arrow{d}{\l_nicolas_snakelem_BtoBp_tl}\& \l_nicolas_snakelem_C_tl\arrow{r}\arrow{d}{\l_nicolas_snakelem_CtoCp_tl} \& 0\\
+		 0\arrow{r}\& \l_nicolas_snakelem_Ap_tl\arrow{r}[swap]{\l_nicolas_snakelem_AptoBp_tl}\&\l_nicolas_snakelem_Bp_tl\arrow{r}[swap]{\l_nicolas_snakelem_BptoCp_tl}\& \l_nicolas_snakelem_Cp_tl
 	\end{tikzcd}
 }
 
