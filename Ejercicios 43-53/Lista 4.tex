@@ -1,0 +1,347 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage[spanish,es-lcroman]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{amsmath,stackengine,scalerel,mathtools}
+\usepackage{xparse, tikz-cd, pgfplots}
+\usepackage{xstring}
+\usepackage{mathrsfs}
+\usepackage{comment}
+\usepackage{faktor}
+
+\input{C:/Users/HP/Desktop/respaldo/Documents/Maestria/S2/Algebras de Artin/Comandos Matemagicos}
+\title{Ejercicios 43-53}
+\author{Luis Gerardo Arruti Sebastian\\ Sergio Rosado Zúñiga}
+\date{}
+\begin{document}
+	\maketitle
+	\begin{enumerate}[label=\textbf{Ej \arabic*.}]
+		\setcounter{enumi}{42}
+		%43
+		\renewcommand{\copyandpaste}{_{i=1}^{n}}
+		\item Sea $\lrbrack{\catarrow{\pi_i}{A}{A_i}{}}\copyandpaste$ una familia de morfismos en una categoría semiaditiva $\mathscr{C}$. Las siguientes condiciones son equivalentes
+		\begin{enumerate}[label=\textit{\alph*)}]
+			\item $A$ y $\lrbrack{\catarrow{\pi_i}{A}{A_i}{}}\copyandpaste$ son un producto para $\lrbrack{A_i}\copyandpaste$ en $\mathscr{C}$;
+			\item $\exists\ \lrbrack{\catarrow{\mu_i}{A_i}{A}{}}\copyandpaste$ en $\mathscr{C}$ tal que $\sum\limits_{i=1}^{n}\mu_i\pi_i=1_A$ y, $\forall\ i,j\in\lrsqp{1,n}$, $\pi_i\mu_j=\delta_{i,j}^A$.
+		\end{enumerate}
+		\begin{proof}
+			Se tiene el siguiente resultado 
+			\begin{propsn}[1.9.2]
+				Sea $\lrbrack{\catarrow{\mu_i}{A_i}{A}{}}\copyandpaste$ una familia de morfismos en una categoría semiaditiva $\mathscr{C}$. Las siguientes condiciones son equivalentes
+				\begin{enumerate}[label=\textit{\alph*)}]
+					\item $A$ y $\lrbrack{\catarrow{\mu_i}{A_i}{A}{}}\copyandpaste$ son un coproducto para $\lrbrack{A_i}\copyandpaste$ en $\mathscr{C}$;
+					\item $\exists\ \lrbrack{\catarrow{\pi_i}{A}{A_i}{}}\copyandpaste$ en $\mathscr{C}$ tal que $\sum\limits_{i=1}^{n}\mu_i\pi_i=1_A$ y, $\forall\ i,j\in\lrsqp{1,n}$, $\pi_i\mu_j=\delta_{i,j}^A$.
+				\end{enumerate}
+			\end{propsn}
+		Así, considerando que 
+		\begin{align*}
+			\opst{\lrprth{\delta_{i,j}^A}}&=\left\{
+			\begin{tabular}[c]{cc}
+				$\opst{0}$,&$i\neq j$ \\ $\opst{1_{A_i}}$,& $i=j$
+			\end{tabular}
+			\right. \\
+			&=\left\{
+			\begin{tabular}[c]{cc}
+				${0}$,&$i\neq j$ \\ ${1_{A_i}}$,& $i=j$
+			\end{tabular}
+			\right.\\
+			&=\delta_{i,j}^A
+		\end{align*} y pasando a la categoría opuesta, se tiene:
+			\begin{propsn}[1.9.2\textsuperscript{op}]
+				Sea $\lrbrack{\catarrow{\opst{\mu}_i}{A_i}{A}{}}\copyandpaste$ una familia de morfismos en una categoría semiaditiva $\opst{\mathscr{C}}$. Las siguientes condiciones son equivalentes
+				\begin{enumerate}[label=\textit{\alph*)}]
+					\item $A$ y $\lrbrack{\catarrow{\opst{\mu}_i}{A_i}{A}{}}\copyandpaste$ son un coproducto para $\lrbrack{A_i}\copyandpaste$ en $\opst{\mathscr{C}}$;
+					\item $\exists\ \lrbrack{\catarrow{\opst{\pi}_i}{A}{A_i}{}}\copyandpaste$ en $\opst{\mathscr{C}}$ tal que $\sum\limits_{i=1}^{n}\opst{\mu}_i\opst{\pi}_i=1_A$ y, $\forall\ i,j\in\lrsqp{1,n}$, $\opst{\pi}_i\opst{\mu}_j=\delta_{i,j}^A$.
+				\end{enumerate}
+			\end{propsn}
+		Lo cual, sabiendo que la noción dual de coproducto es producto, nos da el siguiente resultado dual 
+		\begin{propsn}[1.9.2\textsuperscript{*}]
+			Sea $\lrbrack{\catarrow{{\mu}_i}{A}{A_i}{}}\copyandpaste$ una familia de morfismos en una categoría semiaditiva $\opst{\mathscr{C}}$. Las siguientes condiciones son equivalentes
+			\begin{enumerate}[label=\textit{\alph*)}]
+				\item $A$ y $\lrbrack{\catarrow{{\mu}_i}{A}{A_i}{}}\copyandpaste$ son un producto para $\lrbrack{A_i}\copyandpaste$ en ${\mathscr{C}}$;
+				\item $\exists\ \lrbrack{\catarrow{{\pi}_i}{A_i}{A}{}}\copyandpaste$ en ${\mathscr{C}}$ tal que $\sum\limits_{i=1}^{n}{\pi}_i\mu_i=1_A$ y, $\forall\ i,j\in\lrsqp{1,n}$, ${\mu}_j{\pi}_i={\delta}_{i,j}^A$.
+			\end{enumerate}
+		\end{propsn}
+		Podemos reescribir la proposición anterior intercambiando $\mu$ por $\pi$  y viceversa, con lo cual por el principio de dualidad se tiene lo deseado.\\
+		\end{proof}
+		%44
+		\item Sean $\mathscr{C}$ una categoría semiaditiva, $A=\coprod\limits\copyandpaste A_i$ y $B=\coprod\limits_{i=1}^{n} B_i$ en $\mathscr{C}$. Si la aplicación $+$ está dada por
+		\begin{align*}
+			\descapp{+}{Mat_{m\times n}\lrprth{A,B}\times Mat_{m\times n}\lrprth{A,B}}{Mat_{m\times n\lrprth{A,B}}}{\lrprth{\alpha,\beta}}{\gamma}{,}\\
+			\lrsqp{\gamma}_{i,j}&:=\lrsqp{\alpha}_{i,j}+\lrsqp{\beta}_{i,j}, && \forall\ i,j\in\lrsqp{1,n}
+		\end{align*}
+		con $+$ al lado derecho de la igualdad anterior siendo la operación suma en $\ringmodhom{\mathscr{C}}{A_j}{B_i}$, entonces $\lrprth{Mat_{m\times n}\lrprth{A,B},+}$ es un monoide abeliano.
+		\begin{proof}
+			Sean $\alpha,\beta,\gamma\in\catmatrix{m}{n}{A}{B}$. Dado que $\mathscr{C}$ es semiaditiva se tiene que $\forall\ \lrprth{r,t}\in\lrsqp{1,m}\times\lrsqp{1,n}$ $\ringmodhom{\mathscr{C}}{A_t}{B_r}$ tiene estructura de monoide abeliano, en patícular su operación es asociativa. Así
+			\begin{align*}
+				\lrsqp{\lrprth{\alpha+\beta}+\gamma}_{r,t}&=\lrsqp{\alpha+\beta}_{r,t}+\lrsqp{\gamma}_{r,t}\\
+				&=\lrprth{\lrsqp{\alpha}_{r,t}+\lrsqp{\beta}_{r,t}}+\lrsqp{\gamma}_{r,t} \\
+				&=\lrsqp{\alpha}_{r,t}+\lrprth{\lrsqp{\beta}_{r,t}+\lrsqp{\gamma}_{r,t}}\\
+				&=\lrsqp{\alpha+\lrprth{\beta+\gamma}}_{r,t}; &&\forall \lrprth{r,t}\in\lrsqp{1,m}\times\lrsqp{1,n}\\
+				\implies +\text{ en }&\catmatrix{m}{n}{A}{B}\text{ es asociativa.}
+			\end{align*}
+		En forma análoga a lo anterior, empleando ahora que la operación en cada $\ringmodhom{\mathscr{C}}{A_t}{B_r}$ es conmutativa, se verifica que $+$ en $\catmatrix{m}{n}{A}{B}$ también lo es y que, si $\lrprth{r,t}\in\lrsqp{1,m}\times\lrsqp{1,n}$ $e_{A_t,B_r}$ es el neutro en $\ringmodhom{\mathscr{C}}{A_t}{B_r}$ y $E$ la matriz en $\catmatrix{m}{n}{A}{B}$ dada por $\lrsqp{E}_{r,t}=e_{A_t,B_r}$, entonces $E$ es el neutro de $+$ en $\catmatrix{m}{n}{A}{B}$.\\
+		\end{proof}
+		%45
+		\item Sean $\{R_i\}_{i=1}^n$ una familia de anillos (asociativos con $1$). Considere el conjunto $R:=\displaystyle\bigtimes_{i=1}^nR_i$, con las
+		operaciones suma y producto dadas  coordenada a coordenada, i.e., para $\displaystyle x=(x_i)^n_{i=1}$ y $\displaystyle y=(y_i)_{i=1}^n$ en $R$,
+		definimos $\displaystyle x+y:=(x_i+y_i)_{i=1}^n$ y $\displaystyle xy=(x_iy_i)_{i=1}^n$.\\
+		
+		Pruebe que 
+		\begin{enumerate}
+			\item[a)] Con las operaciones anteriores $R$ es un anillo con $1_R=(1_{R_i})_{i=1}^n.$
+			\item[b)] Para cada $j\in [1,n]$, la $j$-ésima pritección $proy_j:R\to R_j,$\\ $x=(x_i)_{i=1}^n\mapsto x_j$, es un morfismo en $Rings$ y 
+			suryectivo en $Sets$.
+			\item[c)] $R$ y $\{proy_j:R\to R_i\}_{i=1}^n$ son un producto en $Rings$ para $\{R_i\}_{i=1}^n$.
+		\end{enumerate}
+		\begin{proof}
+			\boxed{a)} Sean $x,y\in R$, con $x=(x_i)_{i=1}^n,\,\,y=(y_i)_{i=1}^n,$\\ 
+			$z=(z_i)_{i=1}^n\,\,$y \,\,$0_R=(0_i)_{i=1}^n$ donde $0_i$ es el neutro aditivo de $R_i$ para cada $i\in I=\{1,2,\ldots,n\}$.\\
+			
+			Grupo con respecto a la suma
+			\begin{itemize}
+				\item[i)] Como $x_i,y_i\in R_i\,\,\,\forall i\in I$ entonces $x_i+y_i\in R_i\,\,\forall i\in I$, así \\$x+y:=(x_i+y_i)_{i=1}^n\in R$. Mas aún, 
+				$(x_i+y_i)_{i=1}^n=(y_i+x_i)_{i=1}^n$, por lo que $x+y=y+x$.
+				\item[ii)] Como $R$ es anillo para toda $i\in I$, entonces 
+				\[(x+y)+z=[(x_i+y_i)+z_i]_{i=1}^n=[x_i+(y_i+z_i)]_{i=1}^n=x+(y+z).\]
+				\item[iii)] $0_R+x=(0_i+x_i)_{i=1}^n=(x_i)_{i=1}^n=x$.
+				\item[iv)] Definimos para cada $x\in R$\quad $-x:=(-x_i)_{i=1}^n$, entonces \\$x+(-x)=(x_i+(-x_i))_{i=1}^n=(0_i)_{i=1}^n=0_R.$
+			\end{itemize}
+			Por lo tanto $R$ es un grupo abeliano con la suma.\\
+			
+			Monoide con respecto a la multiplicación:\\
+			
+			Como $R_i$ es un anillo para cada $i\in I$ se tiene que
+			\begin{itemize}
+				\item[i)] $xy=(x_iy_i)_{i=1}^n\in R$ pues $x_iy_i\in R_i\quad \forall i\in I$.
+				\item[ii)] $(xy)z=[(x_iy_i)z_i]_{i=1}^n=[x_i(y_iz_i)]_{i=1}^n=x(yz)$.
+				\item[iii)] $x1_R=(x_i1_{R_i})_{i=1}^n=(x_i)_{i=1}^n=x=(x_i)_{i=1}^n=(1_{R_i}x_i)_{i=1}^n=1_Rx$.
+				\item[iv)] $(x+y)z=[(x_i+y_i)z_i]^n_{i=1}=[x_iz_i+y_iz_i]^n_{i=1}=xz+yz.$
+			\end{itemize}
+			Por lo tanto $R$ es un anillo con $1_R=(1_{R_i})_{i=1}^n$.\\
+			
+			\boxed{b)} Sea $j\in \{1,2\ldots,n\}$, tomamos $proy_j:R\to R_j$ tal que \\
+			$z=(z_i)_{i=1}^n\mapsto z_j$\quad y sean $x,y$ descritos como en el inciso a).\\
+			
+			Entonces $proy_j(x+y)=proy_j[(x_i+y_i)_{i=1}^n] =x_j+y_j=proy_j(x)+proy_j(y)$ y 
+			$proy_j(xy)=proy_j[(x_iy_i)_{i=1}^n] =x_jy_j=proy_j(x)proy_j(y)$.\\
+			
+			Además, si $a\in R_j$ para alguna $j\in \{1,2,\ldots,n\}$, 
+			se tiene el elemento $\hat{a}\in R$ tal que $\hat{a}=(a_i)_{i=1}^n$ donde $a_i=0\quad \forall i\neq j$ \, y \, $a_j=a$.
+			Así $proy_j(\hat{a})=a$ y en consecuencia $proy_j$ es un morfismo de anillos suprayectivo.\\
+			
+			\boxed{c)} Sea $P$ un anillo y $\{p_i:P\to R_i\}_{i=1}^n$ una familia de morfismos de anillos. Sea $\varphi:P\to R$ tal que $\varphi(x)=x_p$ donde 
+			$x$ es el elemento de $R$ tal que $x_p=(x_i)^n_{i=1}$ con $x_i=p_i(x)$ para cada $i\in \{1,2,\ldots,n\}$. Veamos que es morfismo de anillos.\\
+			
+			Como $p_i$ es morfismo de anillos y $p_i(x)\in R_i\quad \forall i\in \{1,2,\ldots,n\}$ y para cada $x\in P$, 
+			entonces si $(a_i)_{i=1}^n=\varphi(x)$ se tiene que 
+			$a_i=p_i(x)$ para cada $i\in \{1,2,\ldots,n\}$ por lo tanto $\varphi$ está bien definida.\\
+			
+			Sean $x,y\in P$, entonces 
+			\begin{gather*}
+				\varphi(x+y)=(x+y)_p=(p_i(x+y))_{i=1}^n=(p_i(x)+p_i(y))_{i=1}^n\\
+				=(p_i(x))_{i=1}^n+(p_i(y))_{i=1}^n=x_p+y_p=\varphi(x)+\varphi(y)
+			\end{gather*}
+			y
+			\begin{gather*}
+				\varphi(xy)=(xy)_p=(p_i(xy))_{i=1}^n=(p_i(x)p_i(y))_{i=1}^n\\
+				=(p_i(x))_{i=1}^n(p_i(y))_{i=1}^n=x_py_p=\varphi(x)\varphi(y).
+			\end{gather*}
+			
+			Por lo tanto $\varphi$ es un morfismo de anillos.
+			Notemos que, para toda $x\in P$, $proy_j\circ \varphi(x)=proy_j(x_p)=p_j(x)$ para cada $j\in \{1,2,\ldots,n\}$, por lo tanto $p_j=proy_j\circ \varphi$.\\
+			
+			Por último si existiera $\eta:P\to R$ tal que $p_j=proy_j\eta$ para cada \\$j\in \{1,2,\ldots,n\}$, entonces para cada $x\in P$ se tiene que 
+			$\eta(x)\in R$, es decir, $\eta(x)=(x_i)_{i=1}^n$ con $x_i\in R_i\quad \forall i\in \{1,2,\ldots,n\}$.
+			Ahora, como\\ $proy_j\eta(x)=p_j(x)$, entonces $x_j=p_j(x)\quad \forall j\in \{1,2,\ldots,n\}$, es decir, $\eta(x)=(p_i(x))_{i=1}^n=x_p=\varphi(x).$\\
+			
+			Por lo tanto $\varphi$ es único y así $R$ y $\{proy_j:R\to R_i\}_{i=1}^n$ son un producto en $Rings$ para $\{R_i\}_{i=1}^n$.
+			
+		\end{proof}
+		%46
+		\item Para una categoría $\mathscr{C}$, pruebe que las siguientes condiciones son equivalentes
+		
+		\begin{itemize}
+			\item[a)] $\mathscr{C}$ tiene objeto cero y biproductos $A\coprod A$ en  $\mathscr{C}$, $\forall A\in \mathscr{C}$.
+			\item[b)] $\mathscr{C}^{op}$ tiene objeto cero y biproductos $A\coprod A$ en  $\mathscr{C}^{op}$, $\forall A\in \mathscr{C}$.
+		\end{itemize}
+		
+		\begin{proof}
+			Notemos que $\mathscr{C}$ tiene objeto cero si y sólo si $\mathscr{C}^{op}$ tiene objeto cero, pues si $\mathscr{C}$ tiene objeto cero $0$, entonces\\
+			$|\operatorname{Hom}_{\mathscr{C}}(X,0)|=1=|\operatorname{Hom}_{\mathscr{C}}(0,X)|,\quad \forall X\in \mathscr{C}$, pero esto pasa si \\
+			y sólo si $|\operatorname{Hom}_{\mathscr{C}}(0,X)|=1=|\operatorname{Hom}_{\mathscr{C}}(X,0)|,\quad \forall X\in \mathscr{C}^{op}$.\\
+			
+			\boxed{a)\Rightarrow b)} Como $\mathscr{C}$ y $\mathscr{C}^{op}$ tienen objeto cero, si $A\coprod A$ es biproducto en $\mathscr{C}$, entonces 
+			existe $A\prod A$ en $\mathscr{C}$ y $\delta:A\coprod A\longrightarrow A\prod A$ un isomorfismo. Sean $\{\mu_1,\mu,2:A\longrightarrow A\coprod A\}$
+			\quad y \quad $\{\pi_1,\pi_2:A\prod A \longrightarrow A\}$ los morfismos canonicos del coproducto y producto respectivamente, entonces por el 
+			ejercicio 40 $A\coprod A$ con $\{\mu_1^{op},\mu_2^{op}:A\coprod A\longrightarrow A\}$ y $A\prod A$ con 
+			$\{\pi_1^{op},\pi_2^{op}:A\longrightarrow A\prod A \}$ son un producto y un coproducto en $\mathscr{C}^{op}$ respectivamente tales que 
+			$\delta^{op}:A\prod A\longrightarrow A\coprod A$ es un isomorfismo al ser $\delta$ iso. Por lo tanto $A\coprod A$ es un biproducto en 
+			$\mathscr{C}^{op}$.\\
+			
+			\boxed{b)\Rightarrow a)} Es análogo a lo anterior pues $(\mathscr{C}^{op})^{op}=\mathscr{C}$.
+			
+		\end{proof}
+		%47
+		\item Sean $\mathscr{C}$ una categoría preaditiva, $A\in\mathscr{C}$ y $\theta\in\cend{\mathscr{C}}{A}$. Si $\theta$ es idempotente, entonces $1_A-\theta$ también lo es.
+		\begin{proof}
+			Se tiene que $\theta^2=\theta$ y, como $\mathscr{C}$ es preaditiva, la composición de morfismos  en $\mathscr{C}$ es bilineal con respecto a $+$ en $\cend{\mathscr{C}}{A}$. Así
+			\begin{align*}
+				\lrprth{1_A-\theta}^2&=\lrprth{1_A-\theta}\lrprth{1_A-\theta}=1_A^2-1_A\theta-\theta 1_A+\theta^2\\
+				&=1_A-\theta-\theta+\theta\\
+				&=1_A-\theta.
+			\end{align*}
+		\end{proof}
+		%48
+		\item Sea $\mathscr{C}$ una categoría, entonces:
+		\begin{enumerate}[label=\textit{\alph*)}]
+			\item $\mathscr{C}$ es abeliana si y sólo si $\opst{\mathscr{C}}$ es abeliana.
+			\item Supongamos que $\mathscr{C}$ es abeliana y sean $\catarrow{\alpha}{A}{B}{}, \catarrow{\beta}{C}{B}{}$ en $\mathscr{C}$. Si $\alpha$, o $\beta$, es epi, entonces $\lambda$ el morfismo asociado a la matriz $\lrprth{\alpha\ \beta}$ es epi.
+		\end{enumerate}
+		\begin{proof}
+			\boxed{a)} Se tiene del Teorema 1.10.1 d) que  una categoría es abeliana si y sólo si  satisface las siguientes dos condiciones
+			\begin{enumerate}[label=\textit{C\arabic*)}]
+				\item $\mathscr{C}$ es normal y conormal,
+				\item $\mathscr{C}$ tiene pull-backs y push-outs.
+			\end{enumerate}
+			Dado que $C1)$ y $C2)$ son condiciones autoduales, pues (normal)\textsuperscript{*}=conormal y (pull-back)\textsuperscript{*}=push-out, entonces una categoría $\mathscr{C}$ las satisface si y sólo si $\opst{\mathscr{C}}$ las satisface.\\
+			
+			\boxed{b)} Sean $\lrbrack{\pi_1,\pi_2}$ las proyecciones naturales y $\lrbrack{\mu_1,\mu_2}$ las inclusiones naturales del biproducto $A\coprod C$. Entonces $\lambda=\alpha\pi_1+\beta\pi_2\in\ringmodhom{\mathscr{C}}{A\coprod C}{B}$. Supongamos que $f,g\in\ringmodhom{\mathscr{C}}{B}{D}$ son tales que $f\lambda=g\lambda$. Así
+			\begin{align*}
+				f\lrprth{\alpha\pi_1+\beta\pi_2}&=g\lrprth{\alpha\pi_1+\beta\pi_2},\\
+				\implies f\lrprth{\alpha\pi_1+\beta\pi_2}\mu_1&=f\lrprth{\alpha\pi_1+\beta\pi_2}\mu_1\\
+				\implies f\lrprth{\alpha\lrprth{\pi_1\mu_1}+\beta\lrprth{\pi_2\mu_1}}&=g\lrprth{\alpha\lrprth{\pi_1\mu_1}+\beta\lrprth{\pi_2\mu_1}}\\
+				\implies f\lrprth{\alpha\lrprth{1_A}+\beta 0}&=g\lrprth{\alpha 1_A+\beta 0}\\
+				\implies f\alpha=g\alpha.
+			\end{align*}
+			De lo anterior se sigue que $f=g$ si $\alpha$ es epi. La prueba es análoga, componiendo por $\mu_2$ a derecha, si suponemos que $\beta$ es epi.\\
+		\end{proof}
+		%49
+		\item Pruebe que, para un anillo $R$
+		\begin{itemize}
+			\item[a)] $Mod(R)$ es abeliana.
+			\item[b)] $mod(R)$ es abeliana si $R$ es un anillo artiniano izquierdo, donde $mod(R)$ es la subcategoría de $Mod(R)$, cuyos objetos son los $R$-módulos
+			finitamente generados.
+		\end{itemize}
+		\begin{proof}
+			\boxed{a)} Por los ejercicios 29 y 30, $Mod(R)$ tiene kerneles y cokerneles, por el ejercicio 32 es normal y conormal y por el ejercicio 41 
+			tiene productos y coproductos (en particular tiene productos y coproductos finitos) entonces por el teorema 1.10.1 c) se tiene que $Mod(R)$ es abeliana.	
+		\end{proof}		
+		%50
+		\item Sean $\mathscr{A}$ y $\mathscr{B}$ categorías aditivas y $F:\mathscr{A}\to \mathscr{B}$ un funtor de cualquier varianza. Pruebe que los 
+		siguientes son equivalentes:
+		\begin{itemize}
+			\item[a)] $F$ es aditivo.
+			\item[b)] $F_{op}:=F\circ D_{\mathscr{A}^{op}}: \mathscr{A}^{op}\longrightarrow \mathscr{B}$ es aditivo.
+			\item[c)] $F^{op}:=D_{\mathscr{B}}\circ F: \mathscr{A}\longrightarrow \mathscr{B}^{op}$ es aditivo.
+			\item[d)] $F_{op}^{op}:=D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}: \mathscr{A}^{op}\longrightarrow  \mathscr{B}^{op}$ es aditivo.
+		\end{itemize}
+		(Se cambió ligeramente el enunciado para fines practicos de la demostración.)
+		
+		\begin{proof} Recordemos que $\mathscr{A}^{op}$ y $\mathscr{B}^{op}$ son categorías abelianas por 1.9.15, también que
+			$D_{\mathscr{A}^{op}}:\mathscr{A}^{op}\longrightarrow \mathscr{A}$ es un funtor contravariante tal que 
+			$(\begin{tikzcd} A\arrow{r}{f}&B\end{tikzcd})\mapsto(\begin{tikzcd} B\arrow{r}{f^{op}}&A\end{tikzcd})$ y, como $\operatorname{Hom}_\mathscr{A}
+			(X,Y)$ \\es un grupo abeliano, $\displaystyle\operatorname{Hom}_{\mathscr{A}^{op}}(Y,X)$ es también un grupo abeliano.\\
+			
+			Se probará el caso en que $F$ es covariante
+			
+			\boxed{a)\Rightarrow b)} Supongamos $F$ es aditivo. Entonces \\$F:\operatorname{Hom}_\mathscr{A}(X,Y)\longrightarrow
+			\operatorname{Hom}_\mathscr{B}(F(X),F(Y))$ es un morfismo en $Ab$ para toda $X,Y\in \mathscr{A}$. Así para cualesquiera
+			$f^{op}:\operatorname{Hom}_{\mathscr{A}^{op}}(B,A)$\quad y\\
+			$g^{op}:\operatorname{Hom}_{\mathscr{A}^{op}}(C,B)$, entonces
+			\begin{gather*}
+				F_{op}(f^{op}\circ g^{op})=F\circ D_{\mathscr{A}^{op}}(f^{op}\circ g^{op})=F\circ D_{\mathscr{A}^{op}}((g\circ f)^{op})=F(g\circ f)\\
+				=F(g)\circ F(f)=F\circ D_{\mathscr{A}^{op}}(g^{op})\circ F\circ D_{\mathscr{A}^{op}}(f^{op})=F_{op}(g^{op})\circ F_{op}(f^{op}).
+			\end{gather*}
+			Es decir,  $F_{op}$ es un funtor aditivo (pues es contravariante).
+			
+			\boxed{b)\Rightarrow c)} Supongamos $F_{op}$ es aditivo.Entonces \\$F_{op}:\operatorname{Hom}_{\mathscr{A}^{op}}(Y,X)\longrightarrow
+			\operatorname{Hom}_\mathscr{B}(F(X),F(Y))$ es un morfismo en $Ab$ para toda $X,Y\in \mathscr{A^{op}}$. Así para cualesquiera
+			$f:\operatorname{Hom}_{\mathscr{A}}(B,C)$\quad y\\
+			$g:\operatorname{Hom}_{\mathscr{A}}(A,B)$, entonces
+			\begin{gather*}
+				F^{op}(f\circ g)=D_{\mathscr{B}}\circ F(f\circ g)=D_{\mathscr{B}}(F(f\circ g))=(F(f\circ g))^{op}=[F((g^{op}\circ f^{op})^{op})]^{op}\\
+				=[F\circ D_{\mathscr{A}^{op}}(g^{op}\circ f^{op})]^{op}=[F\circ D_{\mathscr{A}^{op}}(f^{op})\circ F\circ D_{\mathscr{A}^{op}}(g^{op})]^{op}\\
+				=[F(f)\circ F(g)]^{op}=(F(g))^{op}\circ (F(f))^{op}=D_{\mathscr{B}}\circ F(g)\circ D_{\mathscr{B}}\circ F(f)=F^{op}(g)\circ F^{op}(f).
+			\end{gather*}
+			Es decir,  $F^{op}$ es un funtor aditivo (pues es contravariante).
+			
+			\boxed{c)\Rightarrow d)} Supongamos $F^{op}$ es aditivo.Entonces \\$F^{op}:\operatorname{Hom}_{\mathscr{A}}(X,Y)\longrightarrow
+			\operatorname{Hom}_{\mathscr{B}^{op}}(F(Y),F(X))$ es un morfismo en $Ab$ para toda $X,Y\in \mathscr{A}$. Así para cualesquiera
+			$g:\operatorname{Hom}_{\mathscr{A}}(A,B)$\quad y\\
+			$f:\operatorname{Hom}_{\mathscr{A}}(B,C)$, entonces
+			
+			\begin{gather*}
+				F_{op}^{op}(f^{op}\circ g^{op})=D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}(f^{op}\circ g^{op})
+				=D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}((g\circ f)^{op})\\
+				=D_{\mathscr{B}}\circ F (g\circ f)=D_{\mathscr{B}}\circ F(f)\circ D_{\mathscr{B}}\circ F(g)\\
+				=D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}(f^{op})\circ D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}(g^{op})\\
+				=F_{op}^{op}(f^{op})\circ F_{op}^{op}(g^{op}).
+			\end{gather*}
+			Es decir, $F_{op}^{op}$ es un funtor aditivo covariante.
+			
+			\boxed{d)\Rightarrow a)} Supongamos $F_{op}^{op}$ es aditivo.Entonces \\$F_{op}^{op}:\operatorname{Hom}_{\mathscr{A}^{op}}(X,Y)\longrightarrow
+			\operatorname{Hom}_{\mathscr{B}^{op}}(F(X),F(Y))$ es un morfismo en $Ab$ para toda $X,Y\in \mathscr{A}$. Así para cualesquiera
+			$g:\operatorname{Hom}_{\mathscr{A}}(A,B)$\quad y\\
+			$f:\operatorname{Hom}_{\mathscr{A}}(B,C)$, entonces
+			
+			\begin{gather*}
+				F(f\circ g)=F\circ D_{\mathscr{A}^{op}}(g^{op}\circ f^{op})=[D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}(g^{op}\circ f^{op})]^{op}\\
+				=[D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}(g^{op})\circ D_{\mathscr{B}}\circ F \circ D_{\mathscr{A}^{op}}(f^{op})]^{op}
+				=[D_{\mathscr{B}}\circ F(g)\circ D_{\mathscr{B}}\circ F(f)]^{op}\\
+				=(D_{\mathscr{B}}\circ F(f))^{op}\circ (D_{\mathscr{B}}\circ F(g))^{op}= F(f)\circ F(g).
+			\end{gather*}
+			Es decir, $F_{op}^{op}$ es un funtor aditivo covariante.\\
+			
+			El caso en que $F$ es contravariante es análogo a esta demostración.\\
+		\end{proof}
+		%51
+		\item Sean $\mathscr{A}$ una categoría aditiva y $A\in\mathscr{A}$ tal que $1_A=0_{A,A}$. Entonces $A$ es un objeto cero en $\mathscr{A}$.
+		\begin{proof}
+			Como $\mathscr{A}$ es aditiva, en partícular es una $\mathbb{Z}$-categoría, con lo cual por la Observación $1.9.1(2)$ todo objeto inicial en $\mathscr{A}$ es un objeto cero en $\mathscr{A}$. Así pues basta con verificar que bajo estas condiciones $A$ es un objeto inicial en $\mathscr{A}$. \\
+			Sea $X\in\mathscr{A}$ y $f\in\ringmodhom{\mathscr{A}}{A}{X}$. Como $\mathscr{A}$ tiene objeto cero, por ser aditiva, entonces existe un (único) morfismo cero $0_{A,X}\in\ringmodhom{\mathscr{A}}{A}{X}$. Además
+			\begin{align*}
+				f&=f 1_A=f 0_{A,A}= 0_{A,X},\\
+				&\implies \ringmodhom{\mathscr{A}}{A}{X}=\lrbrack{0_{A,X}}.
+			\end{align*}
+		\end{proof}
+		%52
+		\item Sean $\mathscr{A}, \mathscr{B}$ categorías aditivas, $X=\coprod\limits\copyandpaste X_i$, $Y=\coprod\limits_{j=1}^{m}Y_i$ en $\mathscr{A}$, $F$ un funtor que preserva coproductos finitos, $\alpha\in\catmatrix{m}{n}{X}{Y}$ y $\overline{\alpha}$ el morfismo en $\ringmodhom{\mathscr{A}}{X}{Y}$ asociado a $\alpha$. Entonces la matriz asociada al morfismo $F\lrprth{\overline{\alpha}}$, $\varphi_{FY,FX}\lrprth{F\lrprth{\overline{\alpha}}}\in\catmatrix{m}{n}{FX}{FY}$, está dada por
+		\begin{align*}
+			\lrsqp{\varphi_{FY,FX}\lrprth{F\lrprth{\overline{\alpha}}}}_{i,j}&=F\lrprth{\lrsqp{\alpha}_{i,j}}, && \forall\ i,j
+		\end{align*}
+		\begin{proof}
+			Dado que $\mathscr{A}$ es abeliana, $X$ y $Y$ son biproductos en $\mathscr{A}$, al igual que $FX$ y $FY$ lo son en $\mathscr{B}$ por ser esta última abeliana y ser $F$ un funtor que preserva coproductos finitos. Más aún, si $\fntfam{\mu_i^X}{i}{n}$, $\fntfam{\mu_i^Y}{i}{m}$, $\fntfam{\pi_i^X}{i}{n}$ y $\fntfam{\pi_i^Y}{i}{m}$ son respectivamente las inclusiones y proyecciones naturales de $X$ y $Y$, entonces $\fntfam{F\lrprth{\mu_i^X}}{i}{n}$, $\fntfam{F\lrprth{\mu_i^Y}}{i}{m}$, $\fntfam{F\lrprth{\pi_i^X}}{i}{n}$ y $\fntfam{F\lrprth{\pi_i^Y}}{i}{m}$ son respectivamente las inclusiones y proyecciones naturales de $FX$ y $FY$. Así
+			\begin{align*}
+				\lrsqp{\varphi_{FY,FX}\lrprth{F\lrprth{\overline{\alpha}}}}_{i,j}&=F\lrprth{\pi_i^Y}F\lrprth{\overline{\alpha}}F\lrprth{\mu_j^X}\\
+				&=F\lrprth{\pi_i^Y\overline{\alpha}\mu_j^X}\\
+				&=F\lrprth{\pi_i^Y\lrprth{\sum_{r,t}\mu_t^Y\lrsqp{\alpha}_{i,j}\pi_r^X}\mu_j^X}\\
+				&=F\lrprth{\sum_{r,t}\lrprth{\lrprth{\pi_i^Y\mu_t^Y}\lrsqp{\alpha}_{i,j}\lrprth{\pi_r^X\mu_j^X}}}\\
+				&=F\lrprth{\sum_{r,t}\delta_{i,t}^Y\lrsqp{\alpha}_{i,j}\delta_{r,j}^X}\\
+				&=F\lrprth{1_{Y_i}\lrsqp{\alpha}_{i,j} 1_{X_j}}\\
+				&=F\lrprth{\lrsqp{\alpha}_{i,j}}.
+			\end{align*}
+		\end{proof}
+		%53
+		\item Sea $G:\mathscr{A}\longrightarrow \mathscr{B}$ un funtor contravariante entre categorías aditivas. Pruebe que $G$ s aditivo si y sólo si
+		manda productos finitos en $\mathscr{A}$ a coproductos finitos en $\mathscr{B}$.
+		
+		\begin{proof}
+			Decimos que un funtor contravariante $G:\mathscr{A}\longrightarrow \mathscr{B}$ entre categorías aditivas manda productos finitos en $\mathscr{A}$ 
+			a coproductos finitos en $\mathscr{B}$ si el funtor $G_{op}:=G\circ D_{\mathscr{A}^{op}}$ preserva coproductos finitos en $\mathscr{A}^{op}$.\\
+			
+			Supongamos $G$ es aditivo, entonces $G_{op}:=G\circ D_{\mathscr{A}^{op}}$ es aditivo por el ejercicio 50. Así, por 1.10.2 $G_{op}$ preserva
+			coproductos finitos en $\mathscr{B}$.\\
+			
+			Ahora, si suponemos que $G$ manda productos finitos de $\mathscr{A}$ en coproductos finitos de $\mathscr{B}$ se tiene por definición que
+			$G\circ D_{\mathscr{A}^{op}}$ preserva coproductos finitos en ${\mathscr{A}^{op}}$, entonces por 1.10.2 $G_{op}$ es aditivo, así
+			$G$ es aditivo.\\
+		\end{proof}
+	\end{enumerate}		
+\end{document}
